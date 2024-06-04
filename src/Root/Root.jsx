@@ -1,15 +1,20 @@
-import Hero from "../Home/Components/Hero";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
-
+import Footer from "../Shared/Footer";
 const Root = () => {
+    const loacation = useLocation()
+    const noHeaderFooter = loacation.pathname.includes('signin')
+    const noHeaderFoot2 = loacation.pathname.includes('signup')
     return (
         <div>
-            {/*  className="lg:w-[1200px] mx-auto" */}
-            <div className=""> 
-                <Navbar></Navbar>
+            <div>
+                {noHeaderFooter || <Navbar></Navbar> && noHeaderFoot2 || <Navbar></Navbar>}
             </div>
             <div>
-                <Hero></Hero>
+                <Outlet></Outlet>
+            </div>
+            <div>
+                {noHeaderFooter || <Footer></Footer> && noHeaderFoot2 || <Footer></Footer>}
             </div>
         </div>
     );
