@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
-
+import { FaRegPlusSquare, FaUnlock } from "react-icons/fa";
 const Navbar = () => {
     const navLinks = <>
-        <NavLink className='mr-6'>Home</NavLink>
-        <NavLink className='mr-6'>Watch Demo</NavLink>
-        <NavLink className='mr-6'>DashBoard</NavLink>
+        <NavLink className='mr-6 font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>Home</NavLink>
+        <NavLink className='mr-6 font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>Watch Demo</NavLink>
+        <NavLink className='mr-6 font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>DashBoard</NavLink>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-transparent z-10 fixed">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -18,7 +18,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <NavLink to='/'>
-                    <a className="btn btn-ghost text-xl bg-slate-500">
+                    <a className="btn btn-ghost text-xl">
                         <img src="https://pixelwibes.com/template/my-task/marketing/assets/img/logo/logo.svg" alt="" />
                         <p className="text-white">TaskMaster</p>
                     </a>
@@ -26,23 +26,18 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    {/* <li><a>Item 1</a></li>
-                    <li>
-                        <details>
-                            <summary>Parent</summary>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    <li><a href="https://www.youtube.com/" target="_blank">Watch Demo</a></li> */}
                     {navLinks}
                 </ul>
             </div>
-            <div className="navbar-end gap-6">
-                <a className="btn">SingIn</a>
-                <a className="btn">SignUp</a>
+            <div className="navbar-end gap-1">
+                <NavLink className='mr-6 text-white flex gap-2 hover:text-[#26AE61] hover:transition-all items-center'>
+                    <FaUnlock />
+                    <p className="font-bold">Sign In</p>
+                </NavLink>
+                <NavLink className='mr-6 text-white flex gap-2 hover:text-[#26AE61] hover:transition-all items-center'>
+                    <FaRegPlusSquare />
+                    <p className="font-bold">Sign Up</p>
+                </NavLink>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
