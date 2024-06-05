@@ -56,7 +56,7 @@ const Footer = () => {
                             <FaRegMessage />
                             <p>Sign Up For a Newsletter</p>
                         </h1>
-                        <p className="mb-3 text-base text-gray-400">Weekly breaking news, analysis and cutting edge advices on job searching.</p>
+                        <p className="mb-3 text-base text-gray-400">Weekly breaking news, analysis and  <br /> cutting edge advices on job searching.</p>
                         <div className="space-x-3 space-y-5">
                             <input type="email" placeholder="Enter your email here" className="p-3 bg-transparent border rounded-md" />
                             <button className="bg-[#26AE61] text-white font-bold p-3 rounded-md">Subscribe</button>
