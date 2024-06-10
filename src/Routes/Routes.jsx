@@ -3,6 +3,8 @@ import Root from "../Root/Root";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import DashBoard from "../DashBoard/DashPages/DashBoard";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -21,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Register></Register>
+            },
+            {
+                path: '/dashboard',
+                element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>
             },
         ]
     },

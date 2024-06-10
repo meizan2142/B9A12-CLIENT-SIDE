@@ -14,7 +14,7 @@ const Footer = () => {
                         </a>
                     </NavLink>
                 </div>
-                <div className="flex justify-around items-center text-white">
+                <div className="grid lg:flex items-center justify-center lg:p-0 p-10 lg:justify-around lg:items-center text-white">
                     <div className="mr-8">
                         <h1 className="font-bold text-lg mb-3">For Candidates</h1>
                         <ul className="space-y-4">

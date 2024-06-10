@@ -5,10 +5,11 @@ const Root = () => {
     const loacation = useLocation()
     const noHeaderFooter = loacation.pathname.includes('signin')
     const noHeaderFoot2 = loacation.pathname.includes('signup')
+    const noHeaderFoot3 = loacation.pathname.includes('dashboard')
     return (
         <div>
             <div>
-                {noHeaderFooter || <Navbar></Navbar> && noHeaderFoot2 || <Navbar></Navbar>}
+                {noHeaderFooter || <Navbar></Navbar> && noHeaderFoot2 || <Navbar></Navbar> && noHeaderFoot3 || <Navbar></Navbar>}
             </div>
             <div>
                 <Outlet></Outlet>
