@@ -23,12 +23,25 @@ const Register = () => {
                 // setUser(res.user)
                 navigate(location?.state ? location?.state : '/')
                 if (res.user) {
-                    Swal.fire({
-                        title: 'Hurray!',
-                        text: 'Registered Successfully..',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
+                    fetch('http://localhost:5000/newuser', {
+                        method: "POST",
+                        headers: {
+                            "content-type": "application/json",
+                        },
+                        body: JSON.stringify(newUser)
                     })
+                        .then(res => res.json())
+                        .then(data => {
+                            // console.log(data)
+                            if (data.insertedId) {
+                                Swal.fire({
+                                    title: 'Success',
+                                    text: 'Registered and stored user on MongoDB Successfully',
+                                    icon: 'success',
+                                    confirmButtonText: 'OK'
+                                })                                
+                            }
+                        })
                 }
             })
             .catch(error => {
@@ -38,7 +51,10 @@ const Register = () => {
     // Google
     const handleGoogleLogin = () => {
         googleLogIn()
-            .then(res => console.log(res.user))
+            .then(res => {
+                console.log(res.user);
+            }
+            )
         navigate(location?.state ? location?.state : '/')
     }
     useEffect(() => {

@@ -1,7 +1,7 @@
 const DashBoard = () => {
     return (
         <div>
-            Saif
+            DashBoard
         </div>
     );
 };
