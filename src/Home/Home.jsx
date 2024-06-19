@@ -13,16 +13,16 @@ const Home = () => {
             <div>
                 <Hero></Hero>
             </div>
-            <div className="mb-32 w-[1200px] mx-auto text-center">
+            <div className="mb-32 lg:w-[1200px] lg:mx-auto text-center">
                 <FeaturesSection></FeaturesSection>
             </div>
-            <div className="mb-32 w-[1200px] mx-auto text-center">
+            <div className="mb-32 lg:w-[1200px] lg:mx-auto text-center">
                 <HowItWorksSection></HowItWorksSection>
             </div>
-            <div className="mb-32 w-[1200px] mx-auto text-center">
+            <div className="mb-32 lg:w-[1200px] lg:mx-auto text-center">
                 <TopEarnersSection></TopEarnersSection>
             </div>
-            <div className="mb-32 w-[1200px] mx-auto text-center">
+            <div className="mb-32 lg:w-[1200px] lg:mx-auto text-center">
                 <TestimonialSection></TestimonialSection>
             </div>
         </div>

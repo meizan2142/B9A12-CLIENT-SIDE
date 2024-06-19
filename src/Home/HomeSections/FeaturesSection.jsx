@@ -5,8 +5,9 @@ const FeaturesSection = () => {
         <div>
             <HomeSectionHeading
                 mainHeading={'OUR FEATURES'}
+                description={'The features section highlights the key functionalities and unique aspects of  a product or service, showcasing what sets it apart and benefits users can expect.'}
             ></HomeSectionHeading>
-            <div className="mt-10 flex justify-around items-center">
+            <div className="mt-10 lg:flex grid lg:justify-around lg:items-center lg:space-y-0 space-y-10">
                 <div>
                     <div className="w-14 h-14 mx-auto mb-3">
                         <img src="https://i.ibb.co/tCTr3MY/download.png" alt="" />
