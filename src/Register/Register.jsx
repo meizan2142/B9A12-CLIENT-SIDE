@@ -1,11 +1,12 @@
 import { useContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { FaGoogle, FaLongArrowAltLeft } from "react-icons/fa";
+import {  FaLongArrowAltLeft } from "react-icons/fa";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogIn from "../Social/SocialLogIn";
 const Register = () => {
-    const { createUser, googleLogIn, user } = useContext(AuthContext)
+    const { createUser, user } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const handleRegister = e => {
@@ -23,7 +24,7 @@ const Register = () => {
                 // setUser(res.user)
                 navigate(location?.state ? location?.state : '/')
                 if (res.user) {
-                    fetch('http://localhost:5000/newuser', {
+                    fetch(`${import.meta.env.VITE_API_URL}/newuser`, {
                         method: "POST",
                         headers: {
                             "content-type": "application/json",
@@ -47,15 +48,6 @@ const Register = () => {
             .catch(error => {
                 console.log(error);
             })
-    }
-    // Google
-    const handleGoogleLogin = () => {
-        googleLogIn()
-            .then(res => {
-                console.log(res.user);
-            }
-            )
-        navigate(location?.state ? location?.state : '/')
     }
     useEffect(() => {
         if (user) {
@@ -116,10 +108,7 @@ const Register = () => {
                                             <option value="TaskCreator">TaskCreator</option>
                                         </select>
                                     </div>
-                                    <div className="form-control">
-                                        <button className="btn  mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold border-none bg-transparent">Sign Up</button>
-                                        <button onClick={handleGoogleLogin} className="btn  mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold border-none bg-transparent">Sign Up With<FaGoogle /> </button>
-                                    </div>
+                                    <SocialLogIn></SocialLogIn>
                                     <p className="font-bold text-black">Have already an account ? <Link to='/signin' className="text-info">SignIn here</Link></p>
                                 </form>
                             </div>

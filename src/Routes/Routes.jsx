@@ -5,6 +5,9 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 import DashBoard from "../DashBoard/DashPages/DashBoard";
 import PrivateRoute from "./PrivateRoute";
+import WorkerHome from "../DashBoard/DashRoutes/WorkerRoutes/WorkerHome";
+import WorkerTaskList from "../DashBoard/DashRoutes/WorkerRoutes/WorkerTaskList";
+import MySubmissions from "../DashBoard/DashRoutes/WorkerRoutes/MySubmissions";
 
 
 const router = createBrowserRouter([
@@ -15,7 +18,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/topearners')
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/topearners`)
             },
             {
                 path: '/signin',
@@ -25,9 +28,23 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <Register></Register>
             },
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
+        children: [
             {
-                path: '/dashboard',
-                element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>
+                path: 'workerhome',
+                element: <WorkerHome></WorkerHome>
+            },
+            {
+                path: 'workertasklist',
+                element: <WorkerTaskList></WorkerTaskList>
+            },
+            {
+                path: 'mysubmissions',
+                element: <MySubmissions></MySubmissions>
             },
         ]
     },

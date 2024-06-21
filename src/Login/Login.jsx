@@ -1,10 +1,11 @@
 import { Helmet } from "react-helmet";
-import { FaGoogle, FaLongArrowAltLeft } from "react-icons/fa";
+import {  FaLongArrowAltLeft } from "react-icons/fa";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext, useEffect } from "react";
+import SocialLogIn from "../Social/SocialLogIn";
 const Login = () => {
-    const { signIn, googleLogIn, user } = useContext(AuthContext)
+    const { signIn, user } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const handleLogin = e => {
@@ -20,12 +21,6 @@ const Login = () => {
                 navigate(location?.state ? location?.state : '/')
             })
             .catch(err => console.log(err))
-    }
-    // Google
-    const handleGoogleLogin = () => {
-        googleLogIn()
-            .then(res => console.log(res.user))
-        navigate(location?.state ? location?.state : '/')
     }
     useEffect(() => {
         if (user) {
@@ -65,10 +60,7 @@ const Login = () => {
                                         </label>
                                         <input type="password" name="password" placeholder="Password" className="input input-bordered text-black" required />
                                     </div>
-                                    <div className="form-control">
-                                        <button className="btn  mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold border-none bg-transparent">Sign In</button>
-                                        <button onClick={handleGoogleLogin} className="btn  mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold border-none bg-transparent">Sign In With<FaGoogle /> </button>
-                                    </div>
+                                    <SocialLogIn></SocialLogIn>
                                     <p className="font-bold text-black">New to Here ? <Link to='/signup' className="text-info">SignUp  here</Link></p>
                                 </form>
                             </div>

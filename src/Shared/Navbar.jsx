@@ -30,7 +30,7 @@ const Navbar = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-500 gap-y-2 rounded-box w-52">
                         <NavLink className='font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>Home</NavLink>
                         <a className='font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm' href="https://www.youtube.com/" target="_blank">Watch Demo</a>
-                        <NavLink className='font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>DashBoard</NavLink>
+                        <NavLink to='/dashboard' className='font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>DashBoard</NavLink>
                     </ul>
                 </div>
                 <NavLink to='/'>
