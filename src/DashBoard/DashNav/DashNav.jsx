@@ -1,10 +1,12 @@
-import { NavLink} from "react-router-dom";
+import { NavLink, useLoaderData} from "react-router-dom";
 
 import { Helmet } from "react-helmet";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 const DashNav = () => {
-    const {user} = useContext(AuthContext)
+    const {user} = useContext(AuthContext);
+    const userDetails = useLoaderData();
+    console.log(userDetails);
     return (
         <div className="navbar flex justify-between ">
             <Helmet>
@@ -23,10 +25,10 @@ const DashNav = () => {
                             <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
                         </div>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        {/* <li className="font-bold">{user.displayName}</li> */}
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 space-y-3 shadow bg-base-100 rounded-box w-52">
+                        <li className="font-bold">{userDetails[0].name}</li>
                         <li className="font-bold">Available Coin</li>
-                        {/* <li className="font-bold">{newUser.role}</li> */}
+                        <li className="font-bold ">{userDetails[0].role}</li>
                     </ul>
                 </div>
                 <button className="btn btn-ghost btn-circle">

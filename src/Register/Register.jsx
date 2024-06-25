@@ -1,59 +1,70 @@
-import { useContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import {  FaLongArrowAltLeft } from "react-icons/fa";
+import { FaLongArrowAltLeft } from "react-icons/fa";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthProvider/AuthProvider";
-import Swal from "sweetalert2";
 import SocialLogIn from "../Social/SocialLogIn";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useContext } from "react";
+import axios from "axios";
+import { ImSpinner11 } from "react-icons/im";
+import Swal from "sweetalert2";
 const Register = () => {
-    const { createUser, user } = useContext(AuthContext)
+    const { createUser, updateUserProfile, setLoading, loading } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
-    const handleRegister = e => {
+    const handleRegister = async e => {
         e.preventDefault()
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         const role = form.role.value;
-        const newUser = { name, email, password, role }
-        console.log(newUser);
-        createUser(email, password)
-            .then(res => {
-                console.log(res.user);
-                // setUser(res.user)
-                navigate(location?.state ? location?.state : '/')
-                if (res.user) {
-                    fetch(`${import.meta.env.VITE_API_URL}/newuser`, {
-                        method: "POST",
-                        headers: {
-                            "content-type": "application/json",
-                        },
-                        body: JSON.stringify(newUser)
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            // console.log(data)
-                            if (data.insertedId) {
-                                Swal.fire({
-                                    title: 'Success',
-                                    text: 'Registered and stored user on MongoDB Successfully',
-                                    icon: 'success',
-                                    confirmButtonText: 'OK'
-                                })                                
-                            }
+        // console.log(role);
+        const photo = form.photo.files[0];
+        const formData = new FormData()
+        formData.append('image', photo)
+        // formData.append('role', role)
+        try {
+            // get image url = 1
+            setLoading(true)
+            const { data } = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`,
+                formData
+            )
+            // console.log(data.data.display_url);
+            const displayURL = data.data.display_url;
+
+            // user registration = 2
+            const result = await createUser(email, password)
+            console.log(result);
+
+            const userData = {email, password, role, displayURL, name }
+            // Save username and photourl = 3
+            await updateUserProfile(name, displayURL)
+            fetch(`${import.meta.env.VITE_API_URL}/newuser`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(userData)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data)
+                    if (data.insertedId) {
+                        Swal.fire({
+                            title: 'Success',
+                            text: 'Registered and stored user on MongoDB Successfully',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
                         })
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
-    useEffect(() => {
-        if (user) {
-            navigate(location.state)
+                        navigate(location?.state ? location?.state : '/')
+                    }
+                })
+            console.log(userData)
         }
-    }, [])
+        catch (err) {
+            console.log(err);
+        }
+    }
     return (
         <div>
             <Helmet>
@@ -97,7 +108,7 @@ const Register = () => {
                                         <label className="label">
                                             <span className="label-text font-bold">Photo URL</span>
                                         </label>
-                                        <input type="text" placeholder="Photo URL" name="photo" className="input input-bordered text-black" required />
+                                        <input type="file" name="photo" className="file-input file-input-bordered  text-black" />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
@@ -108,6 +119,10 @@ const Register = () => {
                                             <option value="TaskCreator">TaskCreator</option>
                                         </select>
                                     </div>
+                                    <button
+                                        className="btn  mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold border-none bg-transparent"
+                                    // disabled={loading}
+                                    >{loading ? <ImSpinner11 className="animate-spin" /> : 'Sign Up'}</button>
                                     <SocialLogIn></SocialLogIn>
                                     <p className="font-bold text-black">Have already an account ? <Link to='/signin' className="text-info">SignIn here</Link></p>
                                 </form>

@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import {  FaLongArrowAltLeft } from "react-icons/fa";
+import { FaLongArrowAltLeft } from "react-icons/fa";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext, useEffect } from "react";
@@ -60,6 +60,8 @@ const Login = () => {
                                         </label>
                                         <input type="password" name="password" placeholder="Password" className="input input-bordered text-black" required />
                                     </div>
+                                    <button
+                                        className="btn  bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold border-none bg-transparent">Sign In</button>
                                     <SocialLogIn></SocialLogIn>
                                     <p className="font-bold text-black">New to Here ? <Link to='/signup' className="text-info">SignUp  here</Link></p>
                                 </form>

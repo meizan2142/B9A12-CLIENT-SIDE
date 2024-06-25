@@ -33,6 +33,7 @@ const router = createBrowserRouter([
     {
         path: 'dashboard',
         element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/newuser`),
         children: [
             {
                 path: 'workerhome',

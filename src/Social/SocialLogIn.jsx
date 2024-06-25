@@ -27,7 +27,7 @@ const SocialLogIn = () => {
     }
     return (
         <div className="form-control">
-            <button className="btn  mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold border-none bg-transparent">Sign Up</button>
+
             <button onClick={handleGoogleLogin} className="btn  mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold border-none bg-transparent">Sign Up With<FaGoogle /> </button>
         </div>
     );
