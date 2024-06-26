@@ -33,10 +33,10 @@ const Register = () => {
             const displayURL = data.data.display_url;
 
             // user registration = 2
+            const userData = {email, password, role, displayURL, name }
             const result = await createUser(email, password)
             console.log(result);
 
-            const userData = {email, password, role, displayURL, name }
             // Save username and photourl = 3
             await updateUserProfile(name, displayURL)
             fetch(`${import.meta.env.VITE_API_URL}/newuser`, {

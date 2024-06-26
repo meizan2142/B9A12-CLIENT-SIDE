@@ -18,7 +18,7 @@ const Login = () => {
         signIn(email, password)
             .then(res => {
                 console.log(res.user)
-                navigate(location?.state ? location?.state : '/')
+                navigate(location?.state ? location?.state : '/dashboard')
             })
             .catch(err => console.log(err))
     }

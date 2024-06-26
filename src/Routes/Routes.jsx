@@ -8,6 +8,9 @@ import PrivateRoute from "./PrivateRoute";
 import WorkerHome from "../DashBoard/DashRoutes/WorkerRoutes/WorkerHome";
 import WorkerTaskList from "../DashBoard/DashRoutes/WorkerRoutes/WorkerTaskList";
 import MySubmissions from "../DashBoard/DashRoutes/WorkerRoutes/MySubmissions";
+import AdminHome from "../DashBoard/DashRoutes/AdminRoutes/AdminHome";
+import ManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageTask";
+import ManageUsers from "../DashBoard/DashRoutes/AdminRoutes/ManageUsers";
 
 
 const router = createBrowserRouter([
@@ -33,8 +36,8 @@ const router = createBrowserRouter([
     {
         path: 'dashboard',
         element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
-        loader: () => fetch(`${import.meta.env.VITE_API_URL}/newuser`),
         children: [
+            // Worker's Routers
             {
                 path: 'workerhome',
                 element: <WorkerHome></WorkerHome>
@@ -46,6 +49,40 @@ const router = createBrowserRouter([
             {
                 path: 'mysubmissions',
                 element: <MySubmissions></MySubmissions>
+            },
+            // Admin Routes
+            {
+                path: 'adminhome',
+                element: <AdminHome></AdminHome>
+            },
+            {
+                path: 'managetask',
+                element: <ManageTask></ManageTask>
+            },
+            {
+                path: 'manageusers',
+                element: <ManageUsers></ManageUsers>
+            },
+            // TaskCreator Routes
+            {
+                path: 'taskcreatorhome',
+                element: <></>
+            },
+            {
+                path: 'addnewtasks',
+                element: <></>
+            },
+            {
+                path: 'mynewtask',
+                element: <></>
+            },
+            {
+                path: 'purchasecoin',
+                element: <></>
+            },
+            {
+                path: 'paymenthistory',
+                element: <></>
             },
         ]
     },
