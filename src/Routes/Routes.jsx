@@ -11,6 +11,11 @@ import MySubmissions from "../DashBoard/DashRoutes/WorkerRoutes/MySubmissions";
 import AdminHome from "../DashBoard/DashRoutes/AdminRoutes/AdminHome";
 import ManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageTask";
 import ManageUsers from "../DashBoard/DashRoutes/AdminRoutes/ManageUsers";
+import TaskCreatorHome from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorHome";
+import AddNewTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/AddNewTask";
+import MyTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/MyTask";
+import PurchaseCoin from "../DashBoard/DashRoutes/TaskCreatorRoutes/PurchaseCoin";
+import PaymentHistory from "../DashBoard/DashRoutes/TaskCreatorRoutes/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -66,23 +71,23 @@ const router = createBrowserRouter([
             // TaskCreator Routes
             {
                 path: 'taskcreatorhome',
-                element: <></>
+                element: <TaskCreatorHome></TaskCreatorHome>
             },
             {
                 path: 'addnewtasks',
-                element: <></>
+                element: <AddNewTask/>
             },
             {
                 path: 'mynewtask',
-                element: <></>
+                element: <MyTask/>
             },
             {
                 path: 'purchasecoin',
-                element: <></>
+                element: <PurchaseCoin/>
             },
             {
                 path: 'paymenthistory',
-                element: <></>
+                element: <PaymentHistory/>
             },
         ]
     },

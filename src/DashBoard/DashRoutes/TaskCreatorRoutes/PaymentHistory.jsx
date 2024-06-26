@@ -1,7 +1,7 @@
 const PaymentHistory = () => {
     return (
         <div>
-            
+            Payment History
         </div>
     );
 };

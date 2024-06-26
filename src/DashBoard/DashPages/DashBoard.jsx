@@ -1,6 +1,6 @@
 import Footer from "../../Shared/Footer";
 import DashNav from "../DashNav/DashNav";
-import WorkerSection from "../DashRoutes/WorkerSection";
+import Sidebar from "../Sidebar/Sidebar";
 const DashBoard = () => {
     return (
         <div>
@@ -8,7 +8,7 @@ const DashBoard = () => {
                 <DashNav></DashNav>
             </div>
             <div>
-                <WorkerSection></WorkerSection>
+                <Sidebar></Sidebar>
             </div>
             <div>
                 <Footer></Footer>
