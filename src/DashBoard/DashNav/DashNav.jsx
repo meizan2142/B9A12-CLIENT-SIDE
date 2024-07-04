@@ -1,11 +1,20 @@
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { Helmet } from "react-helmet";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 const DashNav = () => {
-    const {user} = useContext(AuthContext);
-    const {displayName} = user;
+    const { user } = useContext(AuthContext);
+    const { displayName } = user;
+    const [newUser, setNewUser] = useState([])
+    // console.log(newUser.role);
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
+            .then(res => res.json())
+            .then(data => setNewUser(data))
+            // .then(data => console.log(data))
+        // console.log();
+    }, [])
     return (
         <div className="navbar flex justify-between ">
             <Helmet>
@@ -26,6 +35,7 @@ const DashNav = () => {
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 space-y-3 shadow bg-base-100 rounded-box w-52">
                         <li className="font-bold ">{displayName}</li>
+                        <li className="font-bold">{newUser.role}</li>
                         <li className="font-bold">Available Coin</li>
                     </ul>
                 </div>

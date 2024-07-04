@@ -1,29 +1,36 @@
-import { NavLink, Outlet } from "react-router-dom";
-
+import { useContext, useEffect, useState } from "react";
+import {  Outlet } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import WorkerMenu from "../DashRoutes/WorkerRoutes/WorkerMenu/WorkerMenu";
+import TaskCreatorMenu from "../DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/TaskCreatorMenu";
+import AdminMenu from "../DashRoutes/AdminRoutes/AdminMenu/AdminMenu";
 const Sidebar = () => {
+    const { user } = useContext(AuthContext)
+    // console.log(user.email); 
+    const [newUser, setNewUser] = useState([])
+    // console.log(newUser.role);
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
+            .then(res => res.json())
+            .then(data => setNewUser(data))
+        // .then(data => console.log(data))
+        // console.log();
+    }, [])
     return (
-        <div className="flex justify-between items-center">
+        <div className="flex w-[1400px] mx-auto justify-evenly min-h-screen">
+
+
             {/* Sidebar */}
             <div className="border p-5 rounded-lg bg-[#171825] md:hidden hidden lg:inline-block space-y-20">
-                <div className="grid space-y-6">
-                    <NavLink to='adminhome' className={({ isActive }) => isActive ? 'font-bold text-[#3456F2]' : 'text-[#3456F2]'}>Admin Home</NavLink>
-                    <NavLink to='manageusers' className={({ isActive }) => isActive ? 'font-bold text-[#3456F2]' : 'text-[#3456F2]'}>Manage Users</NavLink>
-                    <NavLink to='managetask' className={({ isActive }) => isActive ? 'font-bold text-[#3456F2]' : 'text-[#3456F2]'}>Manage Task</NavLink>
-                </div>
-                <div className="grid space-y-6">
-                    <NavLink to='workerhome' className={({ isActive }) => isActive ? 'font-bold text-[#3456F2]' : 'text-[#3456F2]'}>Worker Home</NavLink>
-                    <NavLink to='workertasklist' className={({ isActive }) => isActive ? 'font-bold text-[#3456F2]' : 'text-[#3456F2]'}>Task List</NavLink>
-                    <NavLink to='mysubmissions' className={({ isActive }) => isActive ? 'font-bold text-[#3456F2]' : 'text-[#3456F2]'}>My Submissions</NavLink>
-                </div>
-                <div className="grid space-y-6">
-                    <NavLink to='taskcreatorhome' className={({ isActive }) => isActive ? 'font-bold text-[#3456F2]' : 'text-[#3456F2]'}>TaskCreator Home</NavLink>
-                    <NavLink to='addnewtasks' className={({ isActive }) => isActive ? 'font-bold text-[#3456F2]' : 'text-[#3456F2]'}>Add New Task</NavLink>
-                    <NavLink to='mynewtask' className={({ isActive }) => isActive ? 'font-bold text-[#3456F2]' : 'text-[#3456F2]'}>My New Task</NavLink>
-                    <NavLink to='purchasecoin' className={({ isActive }) => isActive ? 'font-bold text-[#3456F2]' : 'text-[#3456F2]'}>Purchase Coin</NavLink>
-                    <NavLink to='paymenthistory' className={({ isActive }) => isActive ? 'font-bold text-[#3456F2]' : 'text-[#3456F2]'}>Payment History</NavLink>
-                </div>
+                {newUser.role === 'Worker' && <WorkerMenu />}
+                {newUser.role === 'TaskCreator' && <TaskCreatorMenu />}
+                {newUser.role === 'Admin' && <AdminMenu/>}
+                {/* <AdminMenu /> */}
+                {/* <div className="mt-24">
+                    <NavLink className="font-bold text-[#26AE61]" onClick={logOut}>LogOut</NavLink>
+                </div> */}
             </div>
-            {/* Outlet */}
+            {/* Outlet text-[#26AE61] */}
             <div>
                 <Outlet></Outlet>
             </div>

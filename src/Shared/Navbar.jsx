@@ -6,6 +6,13 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from "react-tooltip";
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
+    // const [newUser, setNewUser] = useState([])
+    // useEffect(() => {
+    //     fetch(`${import.meta.env.VITE_API_URL}/newuser`)
+    //     .then(res => res.json())
+    //     .then(data => setNewUser(data))
+    //     // .then(data => console.log(data))
+    // },[])
     const navLinks = <>
         {
             user ?
@@ -21,7 +28,7 @@ const Navbar = () => {
         }
     </>
     return (
-        <div className="navbar bg-transparent z-10 fixed lg:px-[250px] bg-black lg:h-20 h-24">
+        <div className="navbar bg-transparent z-10 fixed lg:px-[250px] lg:h-20 h-24">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-white">

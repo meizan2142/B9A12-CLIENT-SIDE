@@ -10,12 +10,12 @@ import WorkerTaskList from "../DashBoard/DashRoutes/WorkerRoutes/WorkerTaskList"
 import MySubmissions from "../DashBoard/DashRoutes/WorkerRoutes/MySubmissions";
 import AdminHome from "../DashBoard/DashRoutes/AdminRoutes/AdminHome";
 import ManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageTask";
-import ManageUsers from "../DashBoard/DashRoutes/AdminRoutes/ManageUsers";
 import TaskCreatorHome from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorHome";
 import AddNewTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/AddNewTask";
 import MyTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/MyTask";
 import PurchaseCoin from "../DashBoard/DashRoutes/TaskCreatorRoutes/PurchaseCoin";
 import PaymentHistory from "../DashBoard/DashRoutes/TaskCreatorRoutes/PaymentHistory";
+import ManageUsers from "../DashBoard/DashRoutes/AdminRoutes/ManageRow/ManageUsers";
 
 
 const router = createBrowserRouter([
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
             // Worker's Routers
             {
                 path: 'workerhome',
-                element: <WorkerHome></WorkerHome>
+                element: <PrivateRoute><WorkerHome></WorkerHome></PrivateRoute>
             },
             {
                 path: 'workertasklist',
@@ -66,7 +66,8 @@ const router = createBrowserRouter([
             },
             {
                 path: 'manageusers',
-                element: <ManageUsers></ManageUsers>
+                element: <ManageUsers></ManageUsers>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/newuser`)
             },
             // TaskCreator Routes
             {
