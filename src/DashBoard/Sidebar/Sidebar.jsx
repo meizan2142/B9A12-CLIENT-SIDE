@@ -25,10 +25,6 @@ const Sidebar = () => {
                 {newUser.role === 'Worker' && <WorkerMenu />}
                 {newUser.role === 'TaskCreator' && <TaskCreatorMenu />}
                 {newUser.role === 'Admin' && <AdminMenu/>}
-                {/* <AdminMenu /> */}
-                {/* <div className="mt-24">
-                    <NavLink className="font-bold text-[#26AE61]" onClick={logOut}>LogOut</NavLink>
-                </div> */}
             </div>
             {/* Outlet text-[#26AE61] */}
             <div>

@@ -22,7 +22,6 @@ const Register = () => {
         const photo = form.photo.files[0];
         const formData = new FormData()
         formData.append('image', photo)
-        // formData.append('role', role)
         try {
             // get image url = 1
             setLoading(true)

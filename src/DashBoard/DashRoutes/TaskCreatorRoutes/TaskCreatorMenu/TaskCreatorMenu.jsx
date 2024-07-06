@@ -5,7 +5,7 @@ const TaskCreatorMenu = () => {
         <div className="grid space-y-6">
             <MenuItems label='TaskCreator Home' address='taskcreatorhome'></MenuItems>
             <MenuItems label='Add New Task' address='addnewtasks'></MenuItems>
-            <MenuItems label='My New Task' address='mynewtask'></MenuItems>
+            <MenuItems label='My Task' address='mynewtask'></MenuItems>
             <MenuItems label='Purchase Coin' address='purchasecoin'></MenuItems>
             <MenuItems label='Payment History' address='paymenthistory'></MenuItems>
         </div>

@@ -49,7 +49,18 @@ const TaskCreatorHome = () => {
                             <td>Quality Control Specialist</td>
                             <td>Blue</td>
                             <td>Blue</td>
-                            <td><button className="btn btn-success">View Submission</button></td>
+                            <td>
+                                <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>View Submission</button>
+                                <dialog id="my_modal_3" className="modal">
+                                    <div className="modal-box">
+                                        <form method="dialog">
+                                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                        </form>
+                                        <h3 className="font-bold text-lg">Hello!</h3>
+                                        <p className="py-4">Press ESC key or click on ✕ button to close</p>
+                                    </div>
+                                </dialog>
+                            </td>
                             <td><button className="btn btn-success">Approve</button></td>
                             <td><button className="btn btn-success">Reject</button></td>
                         </tr>

@@ -11,11 +11,11 @@ import MySubmissions from "../DashBoard/DashRoutes/WorkerRoutes/MySubmissions";
 import AdminHome from "../DashBoard/DashRoutes/AdminRoutes/AdminHome";
 import ManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageTask";
 import TaskCreatorHome from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorHome";
-import AddNewTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/AddNewTask";
 import MyTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/MyTask";
 import PurchaseCoin from "../DashBoard/DashRoutes/TaskCreatorRoutes/PurchaseCoin";
 import PaymentHistory from "../DashBoard/DashRoutes/TaskCreatorRoutes/PaymentHistory";
 import ManageUsers from "../DashBoard/DashRoutes/AdminRoutes/ManageRow/ManageUsers";
+import AddNewTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/AddNewTask";
 
 
 const router = createBrowserRouter([

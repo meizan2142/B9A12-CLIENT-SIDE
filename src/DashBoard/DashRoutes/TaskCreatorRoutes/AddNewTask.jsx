@@ -1,7 +1,9 @@
+import AddTasks from "./TaskCreatorComponents/AddTasks";
+
 const AddNewTask = () => {
     return (
         <div>
-            Add New Task
+            <AddTasks/> 
         </div>
     );
 };
