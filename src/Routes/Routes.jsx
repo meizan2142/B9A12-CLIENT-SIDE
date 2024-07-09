@@ -79,8 +79,9 @@ const router = createBrowserRouter([
                 element: <AddNewTask/>
             },
             {
-                path: 'mynewtask',
-                element: <MyTask/>
+                path: 'mytask',
+                element: <MyTask/>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/addedtasks`)
             },
             {
                 path: 'purchasecoin',

@@ -1,4 +1,17 @@
+import { useContext, useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { AuthContext } from "../../../../AuthProvider/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 const AddTasks = () => {
+    const { user } = useContext(AuthContext)
+    const [newUser, setNewUser] = useState([])
+    const navigate = useNavigate()
+    const location = useLocation()
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/newuser`)
+            .then(res => res.json())
+            .then(data => setNewUser(data))
+    }, [])
     const handleAddTask = e => {
         e.preventDefault()
         const form = e.target;
@@ -8,11 +21,32 @@ const AddTasks = () => {
         const info = form.info.value;
         const quantity = form.quantity.value;
         const date = form.date.value;
+        const userEmail = user.email;
+        const userName = user.displayName;
+        const currentTime = new Date().toLocaleDateString();
         const image = form.image.files[0];
         const formData = new FormData()
         formData.append('image', image)
-        const newTask = {title, detail, amount, info, quantity, date, image}
-        console.log(newTask);
+        const newTask = { title, detail, amount, info, quantity, date, image, userEmail, userName, currentTime }
+        if (quantity * amount > newUser.length) {
+            toast.error("Not available Coin. Purchase Coin")
+        }
+        else {
+            fetch(`${import.meta.env.VITE_API_URL}/addedtasks`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(newTask)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        toast.success('Task Added Successfully!')
+                        navigate(location?.state ? location?.state : '/dashboard/mytask')
+                    }
+                })
+        }
     }
     return (
         <section
@@ -40,10 +74,10 @@ const AddTasks = () => {
                             <label htmlFor="lastname" className="text-sm font-bold">Task Quantity</label>
                             <input type="number" name="quantity" placeholder="Task Quantity" className="w-full rounded-md p-2 border" />
                         </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label htmlFor="lastname" className="text-sm font-bold">Completion Date</label>
-                                <input type="date" name="date" className="w-full rounded-md p-2 border" />
-                            </div>
+                        <div className="col-span-full sm:col-span-3">
+                            <label htmlFor="lastname" className="text-sm font-bold">Completion Date</label>
+                            <input type="date" name="date" className="w-full rounded-md p-2 border" />
+                        </div>
                         <div className="col-span-full sm:col-span-3 grid space-y-1">
                             <label htmlFor="lastname" className="text-sm font-bold">Task Image</label>
                             <input type="file" name="image" className="file-input file-input-bordered  text-black" />
@@ -54,6 +88,9 @@ const AddTasks = () => {
                     </div>
                 </div>
             </form>
+            <div>
+                <Toaster />
+            </div>
         </section>
     );
 };

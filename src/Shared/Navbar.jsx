@@ -1,24 +1,41 @@
 import { NavLink } from "react-router-dom";
 import { FaCoins, FaRegPlusSquare, FaUnlock } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from "react-tooltip";
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
     // const [newUser, setNewUser] = useState([])
-    // useEffect(() => {
-    //     fetch(`${import.meta.env.VITE_API_URL}/newuser`)
-    //     .then(res => res.json())
-    //     .then(data => setNewUser(data))
-    //     // .then(data => console.log(data))
-    // },[])
+    // setLoading(true)
+    // console.log(user.email);
+    // console.log(newUser);
+    useEffect(() => {
+        // setLoading(true)
+        // fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
+        //     .then(res => res.json())
+            // .then(data => setNewUser(data))
+            // .then(data => console.log(data))
+    }, [])
+
+    // const manageHome = () => {
+    //     if (newUser.role === 'Admin') {
+    //         return '/dashboard/adminhome'
+    //     }
+    //     else if (newUser.role === 'TaskCreator') {
+    //         return '/dashboard/taskcreatorhome'
+    //     }
+    //     else {
+    //         return 'dashboard/workerhome'
+    //     }
+    // }
     const navLinks = <>
         {
             user ?
                 <div>
                     <NavLink to='/' className='mr-6 font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>Home</NavLink>
-                    <NavLink to='/dashboard' className='mr-6 font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>DashBoard</NavLink>
+                    {/* <NavLink to='' className='mr-6 font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>DashBoard</NavLink> */}
+                    <NavLink to='dashboard' className='mr-6 font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>DashBoard</NavLink>
                 </div>
                 :
                 <div>
