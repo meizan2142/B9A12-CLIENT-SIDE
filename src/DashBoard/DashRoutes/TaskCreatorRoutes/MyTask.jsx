@@ -1,4 +1,7 @@
+import { useLoaderData } from "react-router-dom";
+
 const MyTask = () => {
+    const addedTasks = useLoaderData()
     return (
         <div className="overflow-x-auto">
             <table className="table table-zebra">
@@ -14,15 +17,16 @@ const MyTask = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* row 1 */}
-                    <tr>
-                        <th></th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                        <td>Blue</td>
-                        <td>Blue</td>
-                    </tr>
+                    {
+                        addedTasks.map(addedTask => <tr key={addedTask._id}>
+                            <td></td>
+                            <th>{addedTask.title}</th>
+                            <td>{addedTask.quantity}</td>
+                            <td>{addedTask.amount}</td>
+                            <td>Blue</td>
+                            <td>Blue</td>
+                        </tr>)
+                    }
                 </tbody>
             </table>
         </div>

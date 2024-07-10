@@ -3,20 +3,21 @@ import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import WorkerMenu from "../DashRoutes/WorkerRoutes/WorkerMenu/WorkerMenu";
+import TaskCreatorMenu from "../DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/TaskCreatorMenu";
+import AdminMenu from "../DashRoutes/AdminRoutes/AdminMenu/AdminMenu";
+import { IoMdMenu } from "react-icons/io";
 const DashNav = () => {
     const { user } = useContext(AuthContext);
     const { displayName } = user;
     const [newUser, setNewUser] = useState([])
-    // console.log(newUser.role);
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
             .then(res => res.json())
             .then(data => setNewUser(data))
-            // .then(data => console.log(data))
-        // console.log();
     }, [])
     return (
-        <div className="navbar flex justify-between ">
+        <div className="navbar lg:flex lg:justify-between ">
             <Helmet>
                 <title>DashBoard -- TaskMaster</title>
             </Helmet>
@@ -45,6 +46,25 @@ const DashNav = () => {
                         <span className="badge badge-xs badge-primary indicator-item"></span>
                     </div>
                 </button>
+                {/* Drawer for small medium device*/}
+                <div className="drawer lg:hidden inline-block z-10">
+                    <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                    <div className="drawer-content">
+                        {/* Page content here */}
+                        <label htmlFor="my-drawer" className="drawer-button"><IoMdMenu className="w-10"/></label>
+                    </div>
+                    <div className="drawer-side">
+                        <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
+                        <ul className="menu bg-base-200 text-base-content min-h-full w-40 p-4 grid">
+                            {/* Sidebar content here */}
+                            <li><NavLink>{newUser.role === 'Worker' && <WorkerMenu />}</NavLink></li>
+                            <li><NavLink>{newUser.role === 'TaskCreator' && <TaskCreatorMenu />}</NavLink></li>
+                            <li><NavLink>{newUser.role === 'Admin' && <AdminMenu />}</NavLink></li>
+                        </ul>
+                        <div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

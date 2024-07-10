@@ -6,6 +6,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from "react-tooltip";
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
+    console.log(user);
     // const [newUser, setNewUser] = useState([])
     // setLoading(true)
     // console.log(user.email);
@@ -14,7 +15,7 @@ const Navbar = () => {
         // setLoading(true)
         // fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
         //     .then(res => res.json())
-            // .then(data => setNewUser(data))
+        //     .then(data => setNewUser(data))
             // .then(data => console.log(data))
     }, [])
 

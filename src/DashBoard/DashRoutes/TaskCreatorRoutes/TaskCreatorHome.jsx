@@ -2,7 +2,7 @@ const TaskCreatorHome = () => {
     return (
         <div>
             {/* Stats */}
-            <div className="lg:flex grid lg:space-y-0 space-y-5">
+            <div className="lg:flex grid lg:space-y-0 space-y-5 p-5 lg:p-0">
                 <div className="card bg-neutral text-neutral-content lg:w-64 lg:mr-10">
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">

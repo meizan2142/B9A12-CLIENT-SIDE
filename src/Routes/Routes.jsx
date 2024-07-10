@@ -85,7 +85,8 @@ const router = createBrowserRouter([
             },
             {
                 path: 'purchasecoin',
-                element: <PurchaseCoin/>
+                element: <PurchaseCoin/>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/paymentinfo`)
             },
             {
                 path: 'paymenthistory',

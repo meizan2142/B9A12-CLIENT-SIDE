@@ -17,7 +17,7 @@ const Sidebar = () => {
         // console.log();
     }, [])
     return (
-        <div className="flex w-[1400px] mx-auto justify-evenly min-h-screen">
+        <div className="lg:flex lg:w-[1400px] lg:mx-auto lg:justify-evenly lg:min-h-screen">
 
 
             {/* Sidebar */}
