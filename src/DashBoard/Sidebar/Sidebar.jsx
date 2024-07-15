@@ -6,15 +6,11 @@ import TaskCreatorMenu from "../DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/Tas
 import AdminMenu from "../DashRoutes/AdminRoutes/AdminMenu/AdminMenu";
 const Sidebar = () => {
     const { user } = useContext(AuthContext)
-    // console.log(user.email); 
     const [newUser, setNewUser] = useState([])
-    // console.log(newUser.role);
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
             .then(res => res.json())
             .then(data => setNewUser(data))
-        // .then(data => console.log(data))
-        // console.log();
     }, [])
     return (
         <div className="lg:flex lg:w-[1400px] lg:mx-auto lg:justify-evenly lg:min-h-screen">
@@ -26,7 +22,7 @@ const Sidebar = () => {
                 {newUser.role === 'TaskCreator' && <TaskCreatorMenu />}
                 {newUser.role === 'Admin' && <AdminMenu/>}
             </div>
-            {/* Outlet text-[#26AE61] */}
+            {/* Outlet */}
             <div>
                 <Outlet></Outlet>
             </div>

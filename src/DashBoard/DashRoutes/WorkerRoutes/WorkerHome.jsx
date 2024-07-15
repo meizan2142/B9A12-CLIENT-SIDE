@@ -1,4 +1,8 @@
+import { useLoaderData } from "react-router-dom";
+
 const WorkerHome = () => {
+    const taskInfo = useLoaderData()
+    // const { title, userName, amount } = taskInfo;
     return (
         <div>
             {/* Stats */}
@@ -39,14 +43,15 @@ const WorkerHome = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                            <td><p className="bg-[#26AE61] text-center rounded-lg text-white font-bold p-1">Approved</p></td>
-                        </tr>
+                        {
+                            taskInfo.map(task => <tr key={task._id}>
+                                <th></th>
+                                <td>{task.title}</td>
+                                <td>{task.amount}</td>
+                                <td>{task.userName}</td>
+                                <td><p className="bg-[#26AE61] text-center rounded-lg text-white font-bold p-1">Approved</p></td>
+                            </tr>)
+                        }
                     </tbody>
                 </table>
             </div>

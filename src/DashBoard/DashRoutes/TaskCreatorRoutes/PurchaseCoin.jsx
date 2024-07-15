@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import PaymentCard from "./PaymentCard";
+import PaymentCard from "./TaskCreatorComponents/PaymentCard";
 
 const PurchaseCoin = () => {
     const paymentInfo = useLoaderData()

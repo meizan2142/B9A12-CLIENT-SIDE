@@ -6,7 +6,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext } from "react";
 import axios from "axios";
 import { ImSpinner11 } from "react-icons/im";
-import Swal from "sweetalert2";
+import toast, { Toaster } from "react-hot-toast";
 const Register = () => {
     const { createUser, updateUserProfile, setLoading, loading } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -32,7 +32,7 @@ const Register = () => {
             const displayURL = data.data.display_url;
 
             // user registration = 2
-            const userData = {email, password, role, displayURL, name }
+            const userData = { email, password, role, displayURL, name }
             const result = await createUser(email, password)
             console.log(result);
 
@@ -49,12 +49,7 @@ const Register = () => {
                 .then(data => {
                     // console.log(data)
                     if (data.insertedId) {
-                        Swal.fire({
-                            title: 'Success',
-                            text: 'Registered and stored user on MongoDB Successfully',
-                            icon: 'success',
-                            confirmButtonText: 'OK'
-                        })
+                        toast.success('Registered and Stored!')
                         navigate(location?.state ? location?.state : '/')
                     }
                 })
@@ -71,6 +66,9 @@ const Register = () => {
             </Helmet>
             <div className="hero lg:min-h-screen" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)' }}>
                 <div className="hero-overlay bg-opacity-60"></div>
+                <div>
+                    <Toaster />
+                </div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="hero">
                         <div className="hero-content">

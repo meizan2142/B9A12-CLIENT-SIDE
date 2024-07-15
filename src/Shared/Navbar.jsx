@@ -1,23 +1,20 @@
 import { NavLink } from "react-router-dom";
 import { FaCoins, FaRegPlusSquare, FaUnlock } from "react-icons/fa";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from "react-tooltip";
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext)
-    console.log(user);
-    // const [newUser, setNewUser] = useState([])
-    // setLoading(true)
     // console.log(user.email);
-    // console.log(newUser);
+    const { user, logOut } = useContext(AuthContext);
+    const [newUser, setNewUser] = useState([])
+    console.log(newUser);
     useEffect(() => {
-        // setLoading(true)
-        // fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
-        //     .then(res => res.json())
-        //     .then(data => setNewUser(data))
-            // .then(data => console.log(data))
-    }, [])
+        fetch(`${import.meta.env.VITE_API_URL}/newuser/${user?.email}`)
+            .then(res => res.json())
+            .then(data => setNewUser(data))
+    }, [user?.email])
+    // console.log(newUser.role);
 
     // const manageHome = () => {
     //     if (newUser.role === 'Admin') {
@@ -35,8 +32,8 @@ const Navbar = () => {
             user ?
                 <div>
                     <NavLink to='/' className='mr-6 font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>Home</NavLink>
-                    {/* <NavLink to='' className='mr-6 font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>DashBoard</NavLink> */}
                     <NavLink to='dashboard' className='mr-6 font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>DashBoard</NavLink>
+                    {/* <NavLink  to={() => manageHome()} className='mr-6 font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>DashBoard</NavLink> */}
                 </div>
                 :
                 <div>

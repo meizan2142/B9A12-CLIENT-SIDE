@@ -9,6 +9,7 @@ const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
     // Create User
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     // Sign In
@@ -25,12 +26,14 @@ const AuthProvider = ({ children }) => {
 
     // LogOut
     const logOut = () => {
+        setLoading(true)
         setUser(null)
         signOut(auth)
     }
 
     // update user profile 
     const updateUserProfile = (name, photo) => {
+        setLoading(true)
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo
@@ -40,8 +43,6 @@ const AuthProvider = ({ children }) => {
     // Observer
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            // const user = auth.currentUser
-            // console.log(user);
             if (currentUser) {
                 setUser(currentUser)
                 setLoading(false)

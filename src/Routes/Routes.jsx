@@ -6,7 +6,6 @@ import Register from "../Register/Register";
 import DashBoard from "../DashBoard/DashPages/DashBoard";
 import PrivateRoute from "./PrivateRoute";
 import WorkerHome from "../DashBoard/DashRoutes/WorkerRoutes/WorkerHome";
-import WorkerTaskList from "../DashBoard/DashRoutes/WorkerRoutes/WorkerTaskList";
 import MySubmissions from "../DashBoard/DashRoutes/WorkerRoutes/MySubmissions";
 import AdminHome from "../DashBoard/DashRoutes/AdminRoutes/AdminHome";
 import ManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageTask";
@@ -16,6 +15,8 @@ import PurchaseCoin from "../DashBoard/DashRoutes/TaskCreatorRoutes/PurchaseCoin
 import PaymentHistory from "../DashBoard/DashRoutes/TaskCreatorRoutes/PaymentHistory";
 import ManageUsers from "../DashBoard/DashRoutes/AdminRoutes/ManageRow/ManageUsers";
 import AddNewTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/AddNewTask";
+import WorkerTaskList from "../DashBoard/DashRoutes/WorkerRoutes/TaskList/WorkerTaskList";
+import TaskListDetails from "../DashBoard/DashRoutes/WorkerRoutes/TaskList/TaskListDetails";
 
 
 const router = createBrowserRouter([
@@ -42,18 +43,24 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
         children: [
-            // Worker's Routers
+            // Worker's Routes
             {
                 path: 'workerhome',
-                element: <PrivateRoute><WorkerHome></WorkerHome></PrivateRoute>
+                element: <PrivateRoute><WorkerHome></WorkerHome></PrivateRoute>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/addedtasks`)
             },
             {
                 path: 'workertasklist',
-                element: <WorkerTaskList></WorkerTaskList>
+                element: <WorkerTaskList></WorkerTaskList>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/addedtasks`)
             },
             {
                 path: 'mysubmissions',
                 element: <MySubmissions></MySubmissions>
+            },
+            {
+                path: 'taskdetails/:id',
+                element: <TaskListDetails></TaskListDetails>
             },
             // Admin Routes
             {
@@ -76,21 +83,21 @@ const router = createBrowserRouter([
             },
             {
                 path: 'addnewtasks',
-                element: <AddNewTask/>
+                element: <AddNewTask />
             },
             {
                 path: 'mytask',
-                element: <MyTask/>,
+                element: <MyTask />,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/addedtasks`)
             },
             {
                 path: 'purchasecoin',
-                element: <PurchaseCoin/>,
+                element: <PurchaseCoin />,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/paymentinfo`)
             },
             {
                 path: 'paymenthistory',
-                element: <PaymentHistory/>
+                element: <PaymentHistory />
             },
         ]
     },
