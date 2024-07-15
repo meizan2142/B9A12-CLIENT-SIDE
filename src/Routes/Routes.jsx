@@ -56,11 +56,13 @@ const router = createBrowserRouter([
             },
             {
                 path: 'mysubmissions',
-                element: <MySubmissions></MySubmissions>
+                element: <MySubmissions></MySubmissions>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/addedtasks`)
             },
             {
                 path: 'taskdetails/:id',
-                element: <TaskListDetails></TaskListDetails>
+                element: <TaskListDetails></TaskListDetails>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/addedtasks/${params.id}`)
             },
             // Admin Routes
             {

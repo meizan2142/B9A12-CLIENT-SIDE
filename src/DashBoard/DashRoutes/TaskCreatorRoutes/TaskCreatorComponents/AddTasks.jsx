@@ -68,7 +68,7 @@ const AddTasks = () => {
                         </div>
                         <div className="col-span-full sm:col-span-3">
                             <label htmlFor="lastname" className="text-sm font-bold">Submission Info</label>
-                            <input type="text" placeholder="Job Title" name="info" className="w-full rounded-md p-2 border" />
+                            <input type="text" placeholder="Submission Info" name="info" className="w-full rounded-md p-2 border" />
                         </div>
                         <div className="col-span-full sm:col-span-3">
                             <label htmlFor="lastname" className="text-sm font-bold">Task Quantity</label>
