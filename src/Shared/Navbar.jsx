@@ -73,7 +73,7 @@ const Navbar = () => {
                         <div className="flex items-center">
                             <div className=" mr-5 flex items-center gap-3 border border-white p-2 rounded-2xl" data-tooltip-id="my-tooltip" data-tooltip-content="Coins">
                                 <FaCoins className="text-yellow-500" />
-                                <p className="text-white">140</p>
+                                <p className="text-white">{newUser.coins}</p>
                                 <Tooltip id="my-tooltip" />
                             </div>
                             <div className="dropdown dropdown-end" data-tooltip-id="my-tooltip" data-tooltip-content="User Profile">

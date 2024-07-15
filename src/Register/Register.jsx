@@ -18,10 +18,17 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const role = form.role.value;
-        // console.log(role);
+        let coins = 0;
         const photo = form.photo.files[0];
         const formData = new FormData()
         formData.append('image', photo)
+        // Coins functionality for different users
+        if (role === 'Worker') {
+            coins += 10;
+        }
+        else{
+            coins += 50;
+        }
         try {
             // get image url = 1
             setLoading(true)
@@ -32,10 +39,10 @@ const Register = () => {
             const displayURL = data.data.display_url;
 
             // user registration = 2
-            const userData = { email, password, role, displayURL, name }
+            let userData = { email, password, role, displayURL, name, coins }
             const result = await createUser(email, password)
             console.log(result);
-
+            // console.log(userData.role);
             // Save username and photourl = 3
             await updateUserProfile(name, displayURL)
             fetch(`${import.meta.env.VITE_API_URL}/newuser`, {
@@ -47,7 +54,6 @@ const Register = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data)
                     if (data.insertedId) {
                         toast.success('Registered and Stored!')
                         navigate(location?.state ? location?.state : '/')
