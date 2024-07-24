@@ -17,7 +17,7 @@ const DashNav = () => {
             .then(data => setNewUser(data))
     }, [])
     return (
-        <div className="navbar lg:flex lg:justify-between ">
+        <div className="navbar lg:flex lg:justify-between">
             <Helmet>
                 <title>DashBoard -- TaskMaster</title>
             </Helmet>

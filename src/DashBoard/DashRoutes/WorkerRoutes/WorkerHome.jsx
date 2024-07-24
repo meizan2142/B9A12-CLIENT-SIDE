@@ -1,8 +1,27 @@
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const WorkerHome = () => {
+    const { user } = useContext(AuthContext);
     const taskInfo = useLoaderData()
-    // const { title, userName, amount } = taskInfo;
+    const [newUser, setNewUser] = useState([])
+    console.log(newUser);
+    const [amounts, setAmounts] = useState([])
+    console.log(amounts);
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
+            .then(res => res.json())
+            .then(data => setNewUser(data))
+    }, [])
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/submissions`)
+            .then(res => res.json())
+            .then(data => setAmounts(data))
+    }, [])
+    const calculateTotalAmount = () => {
+        return amounts.reduce((sum, value) => sum + parseFloat(value.payableAmount), 0);
+    };
     return (
         <div>
             {/* Stats */}
@@ -10,21 +29,21 @@ const WorkerHome = () => {
                 <div className="card bg-neutral text-neutral-content lg:w-72 lg:mr-10">
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">
-                            <p>Total Submission: 1000000</p>
+                            <p>Total Submission: {taskInfo.length}</p>
                         </h1>
                     </div>
                 </div>
                 <div className="card bg-neutral text-neutral-content lg:w-72 lg:mr-10">
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">
-                            <p>Available Coins: 1000000</p>
+                            <p>Available Coins: {newUser.coins}</p>
                         </h1>
                     </div>
                 </div>
                 <div className="card bg-neutral text-neutral-content lg:w-72 lg:mr-10">
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">
-                            <p>Total Earning: 1000000</p>
+                            <p>Total Earning: {calculateTotalAmount()}</p>
                         </h1>
                     </div>
                 </div>
@@ -44,11 +63,11 @@ const WorkerHome = () => {
                     </thead>
                     <tbody>
                         {
-                            taskInfo.map(task => <tr key={task._id}>
+                            amounts.map(amount => <tr key={amount._id}>
                                 <th></th>
-                                <td>{task.title}</td>
-                                <td>{task.amount}</td>
-                                <td>{task.userName}</td>
+                                <td>{amount.title2}</td>
+                                <td>{amount.payableAmount}</td>
+                                <td>{amount.name}</td>
                                 <td><p className="bg-[#26AE61] text-center rounded-lg text-white font-bold p-1">Approved</p></td>
                             </tr>)
                         }

@@ -26,7 +26,7 @@ const Register = () => {
         if (role === 'Worker') {
             coins += 10;
         }
-        else{
+        else if (role === "TaskCreator") {
             coins += 50;
         }
         try {

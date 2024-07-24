@@ -2,7 +2,7 @@ import { MdDelete } from "react-icons/md";
 import ManageUserModal from "./Modal/ManageUserModal";
 
 const ManageRow = ({ worker }) => {
-    const { displayURL, name, email, role } = worker
+    const { displayURL, name, email, role, coins } = worker
     return (
         <tr>
             <td></td>
@@ -22,7 +22,7 @@ const ManageRow = ({ worker }) => {
             </td>
             <td>{email}</td>
             <td>{role}</td>
-            <td>Email</td>
+            <td>{coins}</td>
             <th>
                 <ManageUserModal/>
             </th>

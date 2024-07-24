@@ -9,6 +9,7 @@ const AdminHome = () => {
             .then(res => res.json())
             .then(data => setNewUser(data))
     }, [])
+    console.log(newUser);
     return (
         <div className="lg:p-0 p-7">
             {/* Stats */}
@@ -25,7 +26,7 @@ const AdminHome = () => {
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">
                             <CiCoins1 />
-                            <p>Total Coins: 1000000</p>
+                            <p>Total Coins: {newUser.coins}</p>
                         </h1>
                     </div>
                 </div>

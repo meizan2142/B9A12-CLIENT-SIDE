@@ -16,9 +16,10 @@ const TaskListDetails = () => {
         const payableAmount = amount
         const id = _id;
         const name = userName;
+        const title2 = title;
         const email = userEmail
         const currentDate = currentTime;
-        const submissions = { details, id, name, image, payableAmount, email, currentDate }
+        const submissions = { details, id, name, image, payableAmount, email, currentDate, title2  }
         console.log(submissions);
         fetch(`${import.meta.env.VITE_API_URL}/submissions`, {
             method: "POST",

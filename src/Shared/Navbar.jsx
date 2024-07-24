@@ -8,7 +8,6 @@ const Navbar = () => {
     // console.log(user.email);
     const { user, logOut } = useContext(AuthContext);
     const [newUser, setNewUser] = useState([])
-    console.log(newUser);
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user?.email}`)
             .then(res => res.json())
@@ -50,9 +49,20 @@ const Navbar = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-500 gap-y-2 rounded-box w-52">
-                        <NavLink className='font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>Home</NavLink>
-                        <a className='font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm' href="https://www.youtube.com/" target="_blank">Watch Demo</a>
-                        <NavLink to='/dashboard' className='font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>DashBoard</NavLink>
+                        <div>
+                            {
+                                user ?
+                                    <div className="grid gap-2">
+                                        <NavLink className='font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>Home</NavLink>
+                                        <NavLink to='/dashboard' className='font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>DashBoard</NavLink>
+                                    </div>
+                                    :
+                                    <div className="grid gap-2">
+                                        <NavLink className='font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm'>Home</NavLink>
+                                        <a className='font-bold text-white hover:text-[#26AE61] hover:transition-all hover:text-sm' href="https://www.youtube.com/" target="_blank">Watch Demo</a>
+                                    </div>
+                            }
+                        </div>
                     </ul>
                 </div>
                 <NavLink to='/'>
