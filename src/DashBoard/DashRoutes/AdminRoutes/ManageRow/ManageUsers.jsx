@@ -22,7 +22,6 @@ const ManageUsers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
                         {
                             workerDetails.filter(w => w.role === 'Worker').map(worker => <ManageRow key={worker._id} worker={worker}></ManageRow>)
                         }

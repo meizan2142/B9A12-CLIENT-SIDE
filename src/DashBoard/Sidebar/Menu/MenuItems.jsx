@@ -5,8 +5,7 @@ const MenuItems = ({ label, address }) => {
         <NavLink
             to={address}
             end
-            className={({ isActive }) => isActive ? 'font-bold text-[#26AE61] underline text-base' : 'text-[#26AE61]'}
-        >
+            className={({ isActive }) => isActive ? 'font-bold text-[#26AE61] underline text-base' : 'text-[#26AE61]'}>
             <span>{label}</span>
         </NavLink>
     );

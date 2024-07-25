@@ -4,12 +4,18 @@ import { MdOutlinePayment } from "react-icons/md";
 
 const AdminHome = () => {
     const [newUser, setNewUser] = useState([])
+    const [withdraws, setWithDraws] = useState([])
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser`)
             .then(res => res.json())
             .then(data => setNewUser(data))
     }, [])
-    console.log(newUser);
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/withdraws`)
+            .then(res => res.json())
+            .then(data => setWithDraws(data))
+    }, [])
+    console.log(withdraws);
     return (
         <div className="lg:p-0 p-7">
             {/* Stats */}
@@ -56,17 +62,18 @@ const AdminHome = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                            <td>Blue</td>
-                            <td>Blue</td>
-                            <td>Blue</td>
-                            <td><button className="btn btn-success">Success</button></td>
-                        </tr>
+                        {
+                            withdraws.map(withdraw => <tr key={withdraw._id}>
+                                <th></th>
+                                <td>{withdraw.workerName}</td>
+                                <td>{withdraw.coin}</td>
+                                <td>{withdraw.amount}</td>
+                                <td>{withdraw.number}</td>
+                                <td>{withdraw.payment}</td>
+                                <td>{withdraw.currentTime}</td>
+                                <td><button className="btn btn-success">Success</button></td>
+                            </tr>)
+                        }
                     </tbody>
                 </table>
             </div>

@@ -6,6 +6,7 @@ const WorkerMenu = () => {
             <MenuItems label='Worker Home' address='workerhome'></MenuItems>
             <MenuItems label='Task List' address='workertasklist'></MenuItems>
             <MenuItems label='My Submissions' address='mysubmissions'></MenuItems>
+            <MenuItems label='WithDrawals' address='withdrawals'></MenuItems>
         </div>
     );
 };

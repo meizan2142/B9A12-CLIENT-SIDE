@@ -6,7 +6,6 @@ import Register from "../Register/Register";
 import DashBoard from "../DashBoard/DashPages/DashBoard";
 import PrivateRoute from "./PrivateRoute";
 import WorkerHome from "../DashBoard/DashRoutes/WorkerRoutes/WorkerHome";
-import MySubmissions from "../DashBoard/DashRoutes/WorkerRoutes/MySubmissions";
 import AdminHome from "../DashBoard/DashRoutes/AdminRoutes/AdminHome";
 import ManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageTask";
 import TaskCreatorHome from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorHome";
@@ -17,6 +16,8 @@ import ManageUsers from "../DashBoard/DashRoutes/AdminRoutes/ManageRow/ManageUse
 import AddNewTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/AddNewTask";
 import WorkerTaskList from "../DashBoard/DashRoutes/WorkerRoutes/TaskList/WorkerTaskList";
 import TaskListDetails from "../DashBoard/DashRoutes/WorkerRoutes/TaskList/TaskListDetails";
+import MySubmissions from "../DashBoard/DashRoutes/WorkerRoutes/MySubmissions";
+import WithDrawals from "../DashBoard/DashRoutes/WorkerRoutes/WithDrawals/WithDrawals";
 
 
 const router = createBrowserRouter([
@@ -57,7 +58,11 @@ const router = createBrowserRouter([
             {
                 path: 'mysubmissions',
                 element: <MySubmissions></MySubmissions>,
-                loader: () => fetch(`${import.meta.env.VITE_API_URL}/addedtasks`)
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/submissions`)
+            },
+            {
+                path: 'withdrawals',
+                element: <WithDrawals></WithDrawals>
             },
             {
                 path: 'taskdetails/:id',
