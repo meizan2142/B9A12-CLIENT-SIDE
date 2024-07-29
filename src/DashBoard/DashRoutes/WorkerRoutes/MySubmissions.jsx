@@ -20,27 +20,38 @@ const MySubmissions = () => {
                 <thead>
                     <tr>
                         <th></th>
+                        <th>Id</th>
                         <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
+                        <th>Email</th>
+                        <th>Title</th>
+                        <th>Details</th>
+                        <th>Current Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     {matchedEmail.length > 0 ?
-                    (
-                        matchedEmail.map((submission) => (
-                            <tr key={submission._id}>
-                                <th></th>
-                                <td></td>
-                                <td>Sayan Ahmed Ayaz</td>
-                                <td>Blue</td>
-                            </tr>
-                        ))
-                    ) 
-                    : 
-                    (
-                        <></>
-                    )}
+                        (
+                            matchedEmail.map((submission) => (
+                                <tr key={submission._id}>
+                                    <td></td>
+                                    <th>{submission._id}</th>
+                                    <th>{submission.name}</th>
+                                    <th>{submission.email}</th>
+                                    <th>{submission.title2}</th>
+                                    <th>{submission.details}</th>
+                                    <th>{submission.currentDate}</th>
+                                </tr>
+                            ))
+                        )
+                        :
+                        (
+                                <tr>
+                                    <td></td>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Email did not match</th>
+                                </tr>
+                        )}
                 </tbody>
             </table>
         </div>

@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-
 import { Helmet } from "react-helmet";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -9,7 +8,7 @@ import AdminMenu from "../DashRoutes/AdminRoutes/AdminMenu/AdminMenu";
 import { IoMdMenu } from "react-icons/io";
 const DashNav = () => {
     const { user } = useContext(AuthContext);
-    const { displayName } = user;
+    const { displayName, photoURL } = user;
     const [newUser, setNewUser] = useState([])
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
@@ -31,13 +30,13 @@ const DashNav = () => {
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
+                            <img alt="Tailwind CSS Navbar component" src={photoURL} />
                         </div>
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 space-y-3 shadow bg-base-100 rounded-box w-52">
                         <li className="font-bold ">{displayName}</li>
                         <li className="font-bold">{newUser.role}</li>
-                        <li className="font-bold">Available Coin</li>
+                        <li className="font-bold">Available Coin: {newUser.coins}</li>
                     </ul>
                 </div>
                 <button className="btn btn-ghost btn-circle">
@@ -51,7 +50,7 @@ const DashNav = () => {
                     <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content">
                         {/* Page content here */}
-                        <label htmlFor="my-drawer" className="drawer-button"><IoMdMenu className="w-10"/></label>
+                        <label htmlFor="my-drawer" className="drawer-button"><IoMdMenu className="w-10" /></label>
                     </div>
                     <div className="drawer-side">
                         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>

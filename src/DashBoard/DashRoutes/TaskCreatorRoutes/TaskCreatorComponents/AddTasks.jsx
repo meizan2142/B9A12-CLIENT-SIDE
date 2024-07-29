@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../../../../AuthProvider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import moment from "moment";
 const AddTasks = () => {
     const { user } = useContext(AuthContext)
     const [newUser, setNewUser] = useState([])
@@ -23,7 +24,7 @@ const AddTasks = () => {
         const date = form.date.value;
         const userEmail = user.email;
         const userName = user.displayName;
-        const currentTime = new Date().toLocaleDateString();
+        const currentTime = moment().format('LLL');
         const image = form.image.files[0];
         const formData = new FormData()
         formData.append('image', image)

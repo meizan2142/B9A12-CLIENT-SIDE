@@ -5,21 +5,21 @@ const TaskListDetails = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const singleTaskDetails = useLoaderData()
-    const { _id, title, detail, amount, currentTime, userEmail, userName } = singleTaskDetails;
+    const {  title, detail, amount, currentTime, userEmail, userName } = singleTaskDetails;
     const hanldeSubmit = e => {
         e.preventDefault()
         const form = e.target;
-        const details = form.details.value;
+        const details = detail;
         const image = form.image.files[0];
         const formData = new FormData()
         formData.append('image', image)
         const payableAmount = amount
-        const id = _id;
         const name = userName;
+        const status = "Pending";
         const title2 = title;
         const email = userEmail
         const currentDate = currentTime;
-        const submissions = { details, id, name, image, payableAmount, email, currentDate, title2  }
+        const submissions = { details,  name, image, payableAmount, email, currentDate, title2, status  }
         console.log(submissions);
         fetch(`${import.meta.env.VITE_API_URL}/submissions`, {
             method: "POST",
@@ -44,44 +44,8 @@ const TaskListDetails = () => {
                     <div className="grid grid-cols-4 gap-6 p-6">
                         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-4 ">
                             <div className="col-span-full sm:col-span-3">
-                                <label htmlFor="firstname" className="text-sm font-bold">Task ID</label>
-                                <p>{_id}</p>
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label htmlFor="firstname" className="text-sm font-bold">Task Title</label>
-                                <p>{title}</p>
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label htmlFor="lastname" className="text-sm font-bold">Task Detail</label>
-                                <p>{detail}</p>
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label htmlFor="firstname" className="text-sm font-bold">Payable Amount</label>
-                                <p>{amount}</p>
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
                                 <label htmlFor="lastname" className="text-sm font-bold">Submission Details</label>
                                 <textarea className="textarea textarea-bordered w-full rounded-md p-2  border mt-2" name="details" placeholder="Submission Details"></textarea>
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label htmlFor="lastname" className="text-sm font-bold">Worker Email</label>
-                                <p>{userEmail}</p>
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label htmlFor="lastname" className="text-sm font-bold">Worker Name</label>
-                                <p>{userName}</p>
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label htmlFor="lastname" className="text-sm font-bold">Creator Email</label>
-                                <p>{userEmail}</p>
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label htmlFor="lastname" className="text-sm font-bold">Creator Name</label>
-                                <p>{userName}</p>
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label htmlFor="lastname" className="text-sm font-bold">Current Date</label>
-                                <p>{currentTime}</p>
                             </div>
                             <div className="col-span-full sm:col-span-3 grid space-y-1">
                                 <label htmlFor="lastname" className="text-sm font-bold">Task Image URL</label>

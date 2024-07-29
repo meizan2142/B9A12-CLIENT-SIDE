@@ -16,7 +16,7 @@ const TaskListCard = ({ taskInfo }) => {
                     <NavLink to={`/dashboard/taskdetails/${_id}`} className="btn bg-[#26AE61] text-white font-bold">View Details</NavLink>
                 </div>
             </div>
-        </div>
+        </div>  
     );
 };
 

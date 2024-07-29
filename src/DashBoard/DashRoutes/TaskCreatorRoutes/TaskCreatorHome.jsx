@@ -1,4 +1,27 @@
+import { useContext, useEffect, useMemo, useState } from "react";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import { useLoaderData } from "react-router-dom";
+import ViewSubmissionModal from "./TaskCreatorComponents/ViewSubmissionModal";
 const TaskCreatorHome = () => {
+    const { user } = useContext(AuthContext);
+    const [newUser, setNewUser] = useState([])
+    const { coins } = newUser;
+    const [amounts, setAmounts] = useState([])
+    const tasks = useLoaderData([])
+    const [dataState, setDataState] = useState(tasks);
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
+            .then(res => res.json())
+            .then(data => setNewUser(data))
+    }, [])
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/submissions`)
+            .then(res => res.json())
+            .then(data => setAmounts(data))
+    }, [])
+    const totalQuantity = useMemo(() => {
+        return dataState.reduce((accu, item) => accu + parseInt(item.quantity, 10), 0);
+    }, [dataState]);
     return (
         <div>
             {/* Stats */}
@@ -6,21 +29,21 @@ const TaskCreatorHome = () => {
                 <div className="card bg-neutral text-neutral-content lg:w-64 lg:mr-10">
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">
-                            <p>Pending Task: </p>
+                            <p>Pending Task: {totalQuantity}</p>
                         </h1>
                     </div>
                 </div>
                 <div className="card bg-neutral text-neutral-content lg:w-68 lg:mr-10">
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">
-                            <p>Available Coins: 1000000</p>
+                            <p>Available Coins: {coins}</p>
                         </h1>
                     </div>
                 </div>
                 <div className="card bg-neutral text-neutral-content lg:w-68 lg:mr-10">
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">
-                            <p>Total Payments: 1000000</p>
+                            <p>Total Payments: </p>
                         </h1>
                     </div>
                 </div>
@@ -43,27 +66,20 @@ const TaskCreatorHome = () => {
                     </thead>
                     <tbody>
                         {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                            <td>Blue</td>
-                            <td>
-                                <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>View Submission</button>
-                                <dialog id="my_modal_3" className="modal">
-                                    <div className="modal-box">
-                                        <form method="dialog">
-                                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                        </form>
-                                        <h3 className="font-bold text-lg">Hello!</h3>
-                                        <p className="py-4">Press ESC key or click on ✕ button to close</p>
-                                    </div>
-                                </dialog>
-                            </td>
-                            <td><button className="btn btn-success">Approve</button></td>
-                            <td><button className="btn btn-success">Reject</button></td>
-                        </tr>
+                        {
+                            amounts.map(am => <tr key={am._id}>
+                                <th></th>
+                                <td>{am.name}</td>
+                                <td>{am.email}</td>
+                                <td>{am.title2}</td>
+                                <td>{am.payableAmount}</td>
+                                <td>
+                                    <ViewSubmissionModal />
+                                </td>
+                                <td><button className="btn btn-success text-white font-bold">Approve</button></td>
+                                <td><button className="btn btn-success text-white font-bold">Reject</button></td>
+                            </tr>)
+                        }
                     </tbody>
                 </table>
             </div>

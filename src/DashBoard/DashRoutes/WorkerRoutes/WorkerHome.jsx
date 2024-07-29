@@ -1,14 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const WorkerHome = () => {
     const { user } = useContext(AuthContext);
-    const taskInfo = useLoaderData()
     const [newUser, setNewUser] = useState([])
-    console.log(newUser);
     const [amounts, setAmounts] = useState([])
-    console.log(amounts);
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
             .then(res => res.json())
@@ -29,7 +25,7 @@ const WorkerHome = () => {
                 <div className="card bg-neutral text-neutral-content lg:w-72 lg:mr-10">
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">
-                            <p>Total Submission: {taskInfo.length}</p>
+                            <p>Total Submission: {amounts.length}</p>
                         </h1>
                     </div>
                 </div>

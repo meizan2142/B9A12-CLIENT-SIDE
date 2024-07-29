@@ -15,7 +15,7 @@ const SocialLogIn = () => {
             .then(res => {
                 const userInfo = {
                     email: res.user?.email,
-                    name: res.user?.displayName
+                    name: res.user?.displayName,
                 }
                 fetch(`${import.meta.env.VITE_API_URL}/newuser`, {
                     method: "POST",
@@ -36,13 +36,12 @@ const SocialLogIn = () => {
                             navigate(location?.state ? location?.state : '/')
                         }
                     })
-                console.log(userInfo)
+                // console.log(userInfo)
             })
     }
     return (
         <div className="form-control">
-
-            <button onClick={handleGoogleLogin} className="btn  mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold border-none bg-transparent">Sign Up With<FaGoogle /> </button>
+            <button onClick={handleGoogleLogin} className="btn  mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold border-none bg-transparent">Sign Up With<FaGoogle /></button>
         </div>
     );
 };

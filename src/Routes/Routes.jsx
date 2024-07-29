@@ -47,8 +47,7 @@ const router = createBrowserRouter([
             // Worker's Routes
             {
                 path: 'workerhome',
-                element: <PrivateRoute><WorkerHome></WorkerHome></PrivateRoute>,
-                loader: () => fetch(`${import.meta.env.VITE_API_URL}/addedtasks`)
+                element: <PrivateRoute><WorkerHome></WorkerHome></PrivateRoute>
             },
             {
                 path: 'workertasklist',
@@ -86,7 +85,8 @@ const router = createBrowserRouter([
             // TaskCreator Routes
             {
                 path: 'taskcreatorhome',
-                element: <TaskCreatorHome></TaskCreatorHome>
+                element: <TaskCreatorHome></TaskCreatorHome>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/addedtasks`)
             },
             {
                 path: 'addnewtasks',

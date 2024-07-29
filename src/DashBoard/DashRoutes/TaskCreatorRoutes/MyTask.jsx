@@ -1,3 +1,5 @@
+import { FaPen } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
 
 const MyTask = () => {
@@ -23,8 +25,8 @@ const MyTask = () => {
                             <th>{addedTask.title}</th>
                             <td>{addedTask.quantity}</td>
                             <td>{addedTask.amount}</td>
-                            <td>Blue</td>
-                            <td>Blue</td>
+                            <td><FaPen /></td>
+                            <td><MdDelete /></td>
                         </tr>)
                     }
                 </tbody>

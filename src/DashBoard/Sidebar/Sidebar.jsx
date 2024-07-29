@@ -13,9 +13,7 @@ const Sidebar = () => {
             .then(data => setNewUser(data))
     }, [])
     return (
-        <div className="lg:flex lg:w-[1400px] lg:mx-auto lg:justify-evenly lg:min-h-screen">
-
-
+        <div className="lg:flex lg:w-[1400px] lg:mx-auto lg:justify-between lg:min-h-screen">
             {/* Sidebar */}
             <div className="border p-5 rounded-lg bg-[#171825] md:hidden hidden lg:inline-block space-y-20">
                 {newUser.role === 'Worker' && <WorkerMenu />}
@@ -23,7 +21,7 @@ const Sidebar = () => {
                 {newUser.role === 'Admin' && <AdminMenu/>}
             </div>
             {/* Outlet */}
-            <div>
+            <div className="lg:mr-32">
                 <Outlet></Outlet>
             </div>
         </div>

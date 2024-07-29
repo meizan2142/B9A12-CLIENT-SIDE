@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { CiCoins1, CiUser } from "react-icons/ci";
 import { MdOutlinePayment } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 const AdminHome = () => {
     const [newUser, setNewUser] = useState([])
     const [withdraws, setWithDraws] = useState([])
+    const [coinSum, setCoinSum] = useState(0);
+    const calculateSum = () => {
+        return withdraws.reduce((total, item) => total + parseInt(item.amount, 10), 0);
+    };
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser`)
             .then(res => res.json())
@@ -15,7 +20,11 @@ const AdminHome = () => {
             .then(res => res.json())
             .then(data => setWithDraws(data))
     }, [])
-    console.log(withdraws);
+    // Calculate sum of withdraws coin value
+    useEffect(() => {
+        const sumOfCoins = withdraws.reduce((addCoin, value) => addCoin + parseInt(value.coin), 0);
+        setCoinSum(sumOfCoins);
+    }, [withdraws]);
     return (
         <div className="lg:p-0 p-7">
             {/* Stats */}
@@ -32,7 +41,7 @@ const AdminHome = () => {
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">
                             <CiCoins1 />
-                            <p>Total Coins: {newUser.coins}</p>
+                            <p>Total Coins: {coinSum}</p>
                         </h1>
                     </div>
                 </div>
@@ -40,7 +49,7 @@ const AdminHome = () => {
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">
                             <MdOutlinePayment />
-                            <p>Total Payments: 1000000</p>
+                            <p>Total Payments: {calculateSum()}</p>
                         </h1>
                     </div>
                 </div>
@@ -71,7 +80,7 @@ const AdminHome = () => {
                                 <td>{withdraw.number}</td>
                                 <td>{withdraw.payment}</td>
                                 <td>{withdraw.currentTime}</td>
-                                <td><button className="btn btn-success">Success</button></td>
+                                <td><NavLink ><button className="btn btn-success font-bold text-white">Success</button></NavLink></td>
                             </tr>)
                         }
                     </tbody>

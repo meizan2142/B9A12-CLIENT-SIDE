@@ -1,3 +1,6 @@
+import { FaPen } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+
 const PaymentHistory = () => {
     return (
         <div className="overflow-x-auto">
@@ -20,8 +23,8 @@ const PaymentHistory = () => {
                         <td>Cy Ganderton</td>
                         <td>Quality Control Specialist</td>
                         <td>Blue</td>
-                        <td>Blue</td>
-                        <td>Blue</td>
+                        <td><FaPen /></td>
+                        <td><MdDelete /></td>
                     </tr>
                 </tbody>
             </table>
