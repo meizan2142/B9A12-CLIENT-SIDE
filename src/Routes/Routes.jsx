@@ -9,7 +9,6 @@ import WorkerHome from "../DashBoard/DashRoutes/WorkerRoutes/WorkerHome";
 import AdminHome from "../DashBoard/DashRoutes/AdminRoutes/AdminHome";
 import ManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageTask";
 import TaskCreatorHome from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorHome";
-import MyTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/MyTask";
 import PurchaseCoin from "../DashBoard/DashRoutes/TaskCreatorRoutes/PurchaseCoin";
 import PaymentHistory from "../DashBoard/DashRoutes/TaskCreatorRoutes/PaymentHistory";
 import ManageUsers from "../DashBoard/DashRoutes/AdminRoutes/ManageRow/ManageUsers";
@@ -18,6 +17,8 @@ import WorkerTaskList from "../DashBoard/DashRoutes/WorkerRoutes/TaskList/Worker
 import TaskListDetails from "../DashBoard/DashRoutes/WorkerRoutes/TaskList/TaskListDetails";
 import MySubmissions from "../DashBoard/DashRoutes/WorkerRoutes/MySubmissions";
 import WithDrawals from "../DashBoard/DashRoutes/WorkerRoutes/WithDrawals/WithDrawals";
+import MyTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/MyTask/MyTask";
+import UpdateTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/MyTask/UpdateTask";
 
 
 const router = createBrowserRouter([
@@ -96,6 +97,11 @@ const router = createBrowserRouter([
                 path: 'mytask',
                 element: <MyTask />,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/addedtasks`)
+            },
+            {
+                path: 'updatetask/:id',
+                element: <UpdateTask/>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/addedtasks/${params.id}`)
             },
             {
                 path: 'purchasecoin',
