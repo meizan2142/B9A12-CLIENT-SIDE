@@ -66,11 +66,15 @@ const Navbar = () => {
                 {
                     user ?
                         <div className="flex items-center">
-                            <div className=" mr-5 flex items-center gap-3 border border-white p-2 rounded-2xl" data-tooltip-id="my-tooltip" data-tooltip-content="Coins">
-                                <FaCoins className="text-yellow-500" />
-                                <p className="text-white">{newUser.coins}</p>
-                                <Tooltip id="my-tooltip" />
-                            </div>
+                            {
+                                newUser.role === "TaskCreator" || newUser.role === "Worker" ? <div className=" mr-5 flex items-center gap-3 border border-white p-2 rounded-2xl" data-tooltip-id="my-tooltip" data-tooltip-content="Coins">
+                                    <FaCoins className="text-yellow-500" />
+                                    <p className="text-white">{newUser.coins}</p>
+                                    <Tooltip id="my-tooltip" />
+                                </div>
+                                    :
+                                    <></>
+                            }
                             <div className="dropdown dropdown-end" data-tooltip-id="my-tooltip" data-tooltip-content="User Profile">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="rounded-full w-10 h-10">

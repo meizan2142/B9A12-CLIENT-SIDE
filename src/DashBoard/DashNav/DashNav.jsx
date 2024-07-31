@@ -33,10 +33,20 @@ const DashNav = () => {
                             <img alt="Tailwind CSS Navbar component" src={photoURL} />
                         </div>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 space-y-3 shadow bg-base-100 rounded-box w-52">
-                        <li className="font-bold ">{displayName}</li>
-                        <li className="font-bold">{newUser.role}</li>
-                        <li className="font-bold">Available Coin: {newUser.coins}</li>
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] shadow bg-base-100 rounded-box w-52">
+                        {
+                            newUser.role === "TaskCreator" || newUser.role === "Worker" ?
+                                <div  className="p-2 space-y-3">
+                                    <li className="font-bold ">{displayName}</li>
+                                    <li className="font-bold">{newUser.role}</li>
+                                    <li className="font-bold">Available Coin: {newUser.coins}</li>
+                                </div>
+                                :
+                                <div className="p-2 space-y-3">
+                                    <li className="font-bold ">{displayName}</li>
+                                    <li className="font-bold">{newUser.role}</li>
+                                </div>
+                        }
                     </ul>
                 </div>
                 <button className="btn btn-ghost btn-circle">

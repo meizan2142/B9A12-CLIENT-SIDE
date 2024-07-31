@@ -19,8 +19,7 @@ import MySubmissions from "../DashBoard/DashRoutes/WorkerRoutes/MySubmissions";
 import WithDrawals from "../DashBoard/DashRoutes/WorkerRoutes/WithDrawals/WithDrawals";
 import MyTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/MyTask/MyTask";
 import UpdateTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/MyTask/UpdateTask";
-
-
+import PaymentForm from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorComponents/PaymentForm";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -107,6 +106,11 @@ const router = createBrowserRouter([
                 path: 'purchasecoin',
                 element: <PurchaseCoin />,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/paymentinfo`)
+            },
+            {
+                path: 'paymentform/:id',
+                element: <PaymentForm/>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/paymentinfo/${params.id}`)
             },
             {
                 path: 'paymenthistory',

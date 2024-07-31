@@ -26,7 +26,7 @@ const ManageRow = ({ worker }) => {
             <th>
                 <ManageUserModal />
             </th>
-            <td><MdDelete className="w-5 h-5" /></td>
+            <td><button><MdDelete className="w-5 h-5" /></button></td>
         </tr>
     );
 };

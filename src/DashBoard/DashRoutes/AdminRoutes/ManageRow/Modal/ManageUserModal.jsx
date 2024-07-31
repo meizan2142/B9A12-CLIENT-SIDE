@@ -9,7 +9,6 @@ const roles = [
 const ManageUserModal = () => {
     const [selectedPerson, setSelectedPerson] = useState(roles[0])
     useEffect(() => {
-        console.log(selectedPerson.name)
     }, [selectedPerson])
     return (
         <div className='border p-2 rounded-md bg-[#26AE61] text-white'>

@@ -3,7 +3,6 @@ import ManageRow from "./ManageRow";
 
 const ManageUsers = () => {
     const workerDetails = useLoaderData()
-    console.log(workerDetails);
     return (
         // Only show worker details
         <div>
