@@ -17,11 +17,9 @@ const UpdateTask = () => {
         const form = e.target;
         const title = form.title.value;
         const detail = form.detail.value;
-        const amount = form.amount.value;
-        const info = form.info.value;
+        const amount = tasks.amount;
         const quantity = form.quantity.value;
-        const date = form.date.value;
-        const update = { title, detail, amount, info, quantity, date }
+        const update = { title, detail, quantity }
         if (quantity * amount > newUser.length) {
             toast.error("Not available Coin. Purchase Coin")
         }
@@ -57,20 +55,8 @@ const UpdateTask = () => {
                             <input type="text" placeholder="Task Detail" name="detail" className="w-full rounded-md p-2 border" />
                         </div>
                         <div className="col-span-full sm:col-span-3">
-                            <label htmlFor="firstname" className="text-sm font-bold">Payable Amount</label>
-                            <input type="number" placeholder="Payable Amount" name="amount" className="w-full rounded-md p-2 border" />
-                        </div>
-                        <div className="col-span-full sm:col-span-3">
-                            <label htmlFor="lastname" className="text-sm font-bold">Submission Info</label>
-                            <input type="text" placeholder="Submission Info" name="info" className="w-full rounded-md p-2 border" />
-                        </div>
-                        <div className="col-span-full sm:col-span-3">
                             <label htmlFor="lastname" className="text-sm font-bold">Task Quantity</label>
                             <input type="number" name="quantity" placeholder="Task Quantity" className="w-full rounded-md p-2 border" />
-                        </div>
-                        <div className="col-span-full sm:col-span-3">
-                            <label htmlFor="lastname" className="text-sm font-bold">Completion Date</label>
-                            <input type="date" name="date" className="w-full rounded-md p-2 border" />
                         </div>
                     </div>
                     <div className="col-span-full">

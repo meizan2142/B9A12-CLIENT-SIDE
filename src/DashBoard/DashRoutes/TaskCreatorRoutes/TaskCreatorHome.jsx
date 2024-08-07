@@ -67,8 +67,8 @@ const TaskCreatorHome = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            amounts.map(am => <tr key={am._id}>
-                                <th></th>
+                            amounts.map((am, index) => <tr key={am._id}>
+                                <th>{index + 1}</th>
                                 <td>{am.name}</td>
                                 <td>{am.email}</td>
                                 <td>{am.title2}</td>

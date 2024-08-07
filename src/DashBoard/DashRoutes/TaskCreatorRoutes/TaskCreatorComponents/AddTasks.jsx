@@ -81,7 +81,7 @@ const AddTasks = () => {
                         </div>
                         <div className="col-span-full sm:col-span-3 grid space-y-1">
                             <label htmlFor="lastname" className="text-sm font-bold">Task Image</label>
-                            <input type="file" name="image" className="file-input file-input-bordered  text-black" />
+                            <input type="file" name="image" className="file-input file-input-bordered w-full rounded-md border text-black" />
                         </div>
                     </div>
                     <div className="col-span-full">

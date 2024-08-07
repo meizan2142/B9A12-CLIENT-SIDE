@@ -8,10 +8,29 @@ const roles = [
 ]
 const ManageUserModal = () => {
     const [selectedPerson, setSelectedPerson] = useState(roles[0])
+    // const userInfo = useLoaderData()
+    // const [us, setUs] = useState(userInfo)
     useEffect(() => {
+        console.log(selectedPerson);
+        // fetch(`${import.meta.env.VITE_API_URL}/newuser/${us?.email}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         "content-type": "application/json",
+        //     },
+        //     body: JSON.stringify(selectedPerson)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         if (data.modifiedCount > 0) {
+        //             // toast.success('Task Updated Succesfully')
+        //             alert('Saif')
+        //         }
+        //     })
     }, [selectedPerson])
     return (
         <div className='border p-2 rounded-md bg-[#26AE61] text-white'>
+            <div>
+            </div>
             <Listbox value={selectedPerson} onChange={setSelectedPerson}>
                 <ListboxButton>{selectedPerson.name}</ListboxButton>
                 <ListboxOptions anchor="bottom">

@@ -36,10 +36,10 @@ const DashNav = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] shadow bg-base-100 rounded-box w-52">
                         {
                             newUser.role === "TaskCreator" || newUser.role === "Worker" ?
-                                <div  className="p-2 space-y-3">
+                                <div className="p-2 space-y-3">
                                     <li className="font-bold ">{displayName}</li>
                                     <li className="font-bold">{newUser.role}</li>
-                                    <li className="font-bold">Available Coin: {newUser.coins}</li>
+                                    <li className="font-bold mb-3">Available Coin: {newUser.coins}</li>
                                 </div>
                                 :
                                 <div className="p-2 space-y-3">

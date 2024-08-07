@@ -57,7 +57,7 @@ const WithDrawalForm = () => {
                             <input type="number" placeholder="Coins" name="coin" className="w-full rounded-md p-2 border" />
                         </div>
                         <div className="col-span-full sm:col-span-3">
-                            <label htmlFor="lastname" className="text-sm font-bold">Withdraw Amount</label>
+                            <label htmlFor="lastname" className="text-sm font-bold">Withdraw Amount(Dollar)</label>
                             <input type="number" placeholder="Withdraw Amount" name="amount" className="w-full rounded-md p-2 border" />
                         </div>
                         <div className="col-span-full sm:col-span-3 grid">

@@ -5,7 +5,6 @@ import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const SocialLogIn = () => {
-
     const { googleLogIn } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
@@ -16,6 +15,8 @@ const SocialLogIn = () => {
                 const userInfo = {
                     email: res.user?.email,
                     name: res.user?.displayName,
+                    role: "Worker",
+                    coins: 10
                 }
                 fetch(`${import.meta.env.VITE_API_URL}/newuser`, {
                     method: "POST",
@@ -36,7 +37,7 @@ const SocialLogIn = () => {
                             navigate(location?.state ? location?.state : '/')
                         }
                     })
-                // console.log(userInfo)
+                console.log(userInfo)
             })
     }
     return (

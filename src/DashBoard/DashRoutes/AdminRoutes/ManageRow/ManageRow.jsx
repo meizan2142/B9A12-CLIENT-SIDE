@@ -1,8 +1,23 @@
 import { MdDelete } from "react-icons/md";
 import ManageUserModal from "./Modal/ManageUserModal";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const ManageRow = ({ worker }) => {
     const { displayURL, name, email, role, coins } = worker;
+    const [tasks, setTasks] = useState([]);
+    const handleDelete = () => {
+        fetch(`${import.meta.env.VITE_API_URL}/newuser/${email}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success("Deleted Task Successfully.")
+                const remainingTask = tasks.filter(task => task.email !== email)
+                setTasks(remainingTask)
+            })
+    }
     return (
         <tr>
             <td></td>
@@ -16,6 +31,7 @@ const ManageRow = ({ worker }) => {
                         </div>
                     </div>
                     <div>
+                        <Toaster />
                         <div className="font-bold">{name}</div>
                     </div>
                 </div>
@@ -26,7 +42,7 @@ const ManageRow = ({ worker }) => {
             <th>
                 <ManageUserModal />
             </th>
-            <td><button><MdDelete className="w-5 h-5" /></button></td>
+            <td><button onClick={() => { handleDelete(tasks._id) }}><MdDelete className="w-5 h-5" /></button></td>
         </tr>
     );
 };

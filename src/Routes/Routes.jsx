@@ -20,6 +20,7 @@ import WithDrawals from "../DashBoard/DashRoutes/WorkerRoutes/WithDrawals/WithDr
 import MyTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/MyTask/MyTask";
 import UpdateTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/MyTask/UpdateTask";
 import PaymentForm from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorComponents/PaymentForm";
+import ViewManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageRow/ViewManageTask";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -75,7 +76,13 @@ const router = createBrowserRouter([
             },
             {
                 path: 'managetask',
-                element: <ManageTask></ManageTask>
+                element: <ManageTask></ManageTask>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/addedtasks`)
+            },
+            {
+                path: 'viewmanagetaskdetail/:id',
+                element: <ViewManageTask/>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/addedtasks/${params.id}`)
             },
             {
                 path: 'manageusers',

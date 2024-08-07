@@ -37,8 +37,8 @@ const MyTask = () => {
                 </thead>
                 <tbody>
                     {
-                        addedTasks.map(addedTask => <tr key={addedTask._id}>
-                            <td></td>
+                        addedTasks.map((addedTask, index) => <tr key={addedTask._id}>
+                            <td>{index + 1}</td>
                             <th>{addedTask.title}</th>
                             <td>{addedTask.quantity}</td>
                             <td>{addedTask.amount}</td>

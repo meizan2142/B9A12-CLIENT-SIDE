@@ -22,7 +22,7 @@ const ManageUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            workerDetails.filter(w => w.role === 'Worker').map(worker => <ManageRow key={worker._id} worker={worker}></ManageRow>)
+                            workerDetails.filter(w => w.role === 'Worker').map((worker) => <ManageRow key={worker._id} worker={worker}></ManageRow>)
                         }
                     </tbody>
                 </table>
