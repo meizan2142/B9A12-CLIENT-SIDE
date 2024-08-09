@@ -7,7 +7,7 @@ const ViewManageTask = () => {
     const [manage, setManage] = useState(manageTask);
     const {title, detail, userEmail, currentTime} = manage;
     return (
-        <div className="card bg-[#2B3440] text-primary-content w-96">
+        <div className="card bg-[#2B3440] text-primary-content lg:w-96">
             <div className="card-body">
                 <div className="flex items-center justify-between">
                 <h2 className="card-title">{title}</h2>

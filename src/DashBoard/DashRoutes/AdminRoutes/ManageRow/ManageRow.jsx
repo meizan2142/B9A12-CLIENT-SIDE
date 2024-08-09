@@ -1,7 +1,8 @@
 import { MdDelete } from "react-icons/md";
-import ManageUserModal from "./Modal/ManageUserModal";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { NavLink } from "react-router-dom";
+import { FaPen } from "react-icons/fa";
 
 const ManageRow = ({ worker }) => {
     const { displayURL, name, email, role, coins } = worker;
@@ -40,7 +41,7 @@ const ManageRow = ({ worker }) => {
             <td>{role}</td>
             <td>{coins}</td>
             <th>
-                <ManageUserModal />
+                <td><NavLink to={`/dashboard/updaterole/${email}`}><FaPen /></NavLink></td>
             </th>
             <td><button onClick={() => { handleDelete(tasks._id) }}><MdDelete className="w-5 h-5" /></button></td>
         </tr>

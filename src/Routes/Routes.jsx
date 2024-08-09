@@ -21,6 +21,7 @@ import MyTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/My
 import UpdateTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/MyTask/UpdateTask";
 import PaymentForm from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorComponents/PaymentForm";
 import ViewManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageRow/ViewManageTask";
+import UpdateRole from "../DashBoard/DashRoutes/AdminRoutes/UpdateRole";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -88,6 +89,11 @@ const router = createBrowserRouter([
                 path: 'manageusers',
                 element: <ManageUsers></ManageUsers>,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/newuser`)
+            },
+            {
+                path: 'updaterole/:email',
+                element: <UpdateRole/>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/newuser/${params.email}`)
             },
             // TaskCreator Routes
             {

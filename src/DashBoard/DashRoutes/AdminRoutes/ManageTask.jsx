@@ -1,5 +1,6 @@
 import {  useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { NavLink, useLoaderData } from "react-router-dom";
 const ManageTask = () => {
@@ -49,7 +50,7 @@ const ManageTask = () => {
                                 <td>
                                     <div>
                                         <NavLink  to={`/dashboard/viewmanagetaskdetail/${task._id}`}>
-                                            <button>Open Modal</button>
+                                            <button><FaEye /></button>
                                         </NavLink>
                                     </div>
                                 </td>
