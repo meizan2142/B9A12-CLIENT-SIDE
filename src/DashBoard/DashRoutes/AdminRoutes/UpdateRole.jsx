@@ -14,18 +14,24 @@ const UpdateRole = () => {
     const location = useLocation()
     const userInfo = useLoaderData([])
     const [user, setUser] = useState(userInfo)
+    console.log(typeof user.coins);
+    
     let newCoin = 0;
-    let userCoins = 10;
-    if (selectedPerson.role === 'Worker' && userCoins === 10) {
+    let userCoins = user.coins;
+    if (selectedPerson.role === 'Worker') {
         newCoin = userCoins;
     }
-    else if (selectedPerson.role === 'TaskCreator' && userCoins === 10) {
+    else if (selectedPerson.role === 'TaskCreator') {
         newCoin += 50;
+        userCoins = newCoin;
     }
     else if (selectedPerson.role === 'Admin') {
         newCoin = 0;
+        userCoins = newCoin;
     }
-    const updated = { selectedPerson, newCoin }
+    const updated = { selectedPerson, userCoins }
+    console.log(updated);
+    
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`, {
             method: 'PUT',
