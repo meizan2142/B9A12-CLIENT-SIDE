@@ -7,7 +7,7 @@ const MySubmissions = () => {
     const [newUser, setNewUser] = useState([])
     const submissions = useLoaderData()
     // console.log(submissions[0].email);
-    const matchedEmail = submissions.filter(submission => submission.email === newUser.email);
+    const matchedEmail = submissions.filter(submission => submission.workerEmail === newUser.email);
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user?.email}`)
             .then(res => res.json())
@@ -35,8 +35,8 @@ const MySubmissions = () => {
                                 <tr key={submission._id}>
                                     <td></td>
                                     <th>{submission._id}</th>
-                                    <th>{submission.name}</th>
-                                    <th>{submission.email}</th>
+                                    <th>{submission.creatorName}</th>
+                                    <th>{submission.creatorEmail}</th>
                                     <th>{submission.title2}</th>
                                     <th>{submission.details}</th>
                                     <th>{submission.currentDate}</th>
@@ -46,9 +46,6 @@ const MySubmissions = () => {
                         :
                         (
                                 <tr>
-                                    <td></td>
-                                    <th></th>
-                                    <th></th>
                                     <th>Email did not match</th>
                                 </tr>
                         )}

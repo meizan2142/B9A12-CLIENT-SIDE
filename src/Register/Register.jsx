@@ -5,10 +5,9 @@ import SocialLogIn from "../Social/SocialLogIn";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext } from "react";
 import axios from "axios";
-import { ImSpinner11 } from "react-icons/im";
 import toast, { Toaster } from "react-hot-toast";
 const Register = () => {
-    const { createUser, updateUserProfile, setLoading, loading } = useContext(AuthContext)
+    const { createUser, updateUserProfile, setLoading} = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const handleRegister = async e => {
@@ -125,7 +124,7 @@ const Register = () => {
                                     <button
                                         className="btn  mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold border-none bg-transparent"
                                     // disabled={loading}
-                                    >{loading ? <ImSpinner11 className="animate-spin" /> : 'Sign Up'}</button>
+                                    >Sign Up</button>
                                     <SocialLogIn></SocialLogIn>
                                     <p className="font-bold text-black">Have already an account ? <Link to='/signin' className="text-info">SignIn here</Link></p>
                                 </form>

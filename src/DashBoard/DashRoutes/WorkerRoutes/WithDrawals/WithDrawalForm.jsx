@@ -43,7 +43,6 @@ const WithDrawalForm = () => {
                         navigate(location?.state ? location?.state : '/dashboard/workerhome')
                     }
                 })
-            console.log(withdrawInfo);
         }
     }
     return (

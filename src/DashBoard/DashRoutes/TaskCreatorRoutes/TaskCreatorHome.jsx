@@ -1,18 +1,23 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
-import { useLoaderData } from "react-router-dom";
-import ViewSubmissionModal from "./TaskCreatorComponents/ViewSubmissionModal";
+import { NavLink, useLoaderData } from "react-router-dom";
 const TaskCreatorHome = () => {
     const { user } = useContext(AuthContext);
     const [newUser, setNewUser] = useState([])
     const { coins } = newUser;
     const [amounts, setAmounts] = useState([])
+    const [withdraws, setWithdraws] = useState([])
     const tasks = useLoaderData([])
     const [dataState, setDataState] = useState(tasks);
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
             .then(res => res.json())
             .then(data => setNewUser(data))
+    }, [])
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/withdraws`)
+            .then(res => res.json())
+            .then(data => setWithdraws(data))
     }, [])
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/submissions`)
@@ -22,6 +27,9 @@ const TaskCreatorHome = () => {
     const totalQuantity = useMemo(() => {
         return dataState.reduce((accu, item) => accu + parseInt(item.quantity, 10), 0);
     }, [dataState]);
+    const totalAmount = withdraws.reduce((sum, item) => {
+        return sum + Number(item.amount);
+    }, 0);
     return (
         <div>
             {/* Stats */}
@@ -43,7 +51,7 @@ const TaskCreatorHome = () => {
                 <div className="card bg-neutral text-neutral-content lg:w-68 lg:mr-10">
                     <div className="card-body items-center text-center">
                         <h1 className="font-bold flex items-center gap-1">
-                            <p>Total Payments: </p>
+                            <p>Total Payments: {totalAmount}</p>
                         </h1>
                     </div>
                 </div>
@@ -65,19 +73,18 @@ const TaskCreatorHome = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
                         {
-                            amounts.map((am, index) => <tr key={am._id}>
+                            amounts.filter(st => st.status === 'Pending').map((am, index) => <tr key={am._id}>
                                 <th>{index + 1}</th>
                                 <td>{am.name}</td>
                                 <td>{am.email}</td>
                                 <td>{am.title2}</td>
                                 <td>{am.payableAmount}</td>
                                 <td>
-                                    <ViewSubmissionModal />
+                                    <NavLink to={`/dashboard/viewsubmissions/${am._id}`}><button className="btn btn-success text-white font-bold">View Submission</button></NavLink>
                                 </td>
                                 <td><button className="btn btn-success text-white font-bold">Approve</button></td>
-                                <td><button className="btn btn-success text-white font-bold">Reject</button></td>
+                                <td><NavLink to={`/dashboard/statusreject/${am._id}`}><button className="btn btn-success text-white font-bold">Reject</button></NavLink></td>
                             </tr>)
                         }
                     </tbody>

@@ -5,6 +5,7 @@ const WorkerHome = () => {
     const { user } = useContext(AuthContext);
     const [newUser, setNewUser] = useState([])
     const [amounts, setAmounts] = useState([])
+    const [tasks, setTasks] = useState([])    
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
             .then(res => res.json())
@@ -14,7 +15,12 @@ const WorkerHome = () => {
         fetch(`${import.meta.env.VITE_API_URL}/submissions`)
             .then(res => res.json())
             .then(data => setAmounts(data))
-    }, [])
+    }, [])    
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/addedtasks`)
+            .then(res => res.json())
+            .then(data => setTasks(data))
+    }, [])        
     const calculateTotalAmount = () => {
         return amounts.reduce((sum, value) => sum + parseFloat(value.payableAmount), 0);
     };
@@ -59,12 +65,12 @@ const WorkerHome = () => {
                     </thead>
                     <tbody>
                         {
-                            amounts.map(amount => <tr key={amount._id}>
+                            tasks.map(task => <tr key={task._id}>
                                 <th></th>
-                                <td>{amount.title2}</td>
-                                <td>{amount.payableAmount}</td>
-                                <td>{amount.name}</td>
-                                <td><p className="bg-[#26AE61] text-center rounded-lg text-white font-bold p-1">Approved</p></td>
+                                <td>{task.title}</td>
+                                <td>{task.amount}</td>
+                                <td>{task.userName}</td>
+                                <td><p className="bg-[#26AE61] text-center rounded-lg text-white font-bold p-1">{task.status}</p></td>
                             </tr>)
                         }
                     </tbody>

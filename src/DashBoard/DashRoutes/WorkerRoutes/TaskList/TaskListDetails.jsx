@@ -1,11 +1,21 @@
+import { useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../../AuthProvider/AuthProvider";
 
 const TaskListDetails = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const singleTaskDetails = useLoaderData()
-    const {  title, detail, amount, currentTime, userEmail, userName } = singleTaskDetails;
+    const { title, detail, amount, currentTime } = singleTaskDetails;
+    const { user } = useContext(AuthContext);
+    const [newUser, setNewUser] = useState([])
+    const {email, name} = newUser;
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/newuser/${user?.email}`)
+            .then(res => res.json())
+            .then(data => setNewUser(data))
+    }, [user?.email])
     const hanldeSubmit = e => {
         e.preventDefault()
         const form = e.target;
@@ -14,13 +24,14 @@ const TaskListDetails = () => {
         const formData = new FormData()
         formData.append('image', image)
         const payableAmount = amount
-        const name = userName;
         const status = "Pending";
         const title2 = title;
-        const email = userEmail
         const currentDate = currentTime;
-        const submissions = { details,  name, image, payableAmount, email, currentDate, title2, status  }
-        console.log(submissions);
+        const workerEmail = email;
+        const workerName = name;
+        const creatorName = name;
+        const creatorEmail = email;
+        const submissions = { details, image, payableAmount, currentDate, title2, status, workerEmail, workerName, creatorEmail, creatorName }
         fetch(`${import.meta.env.VITE_API_URL}/submissions`, {
             method: "POST",
             headers: {

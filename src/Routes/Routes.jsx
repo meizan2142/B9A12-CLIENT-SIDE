@@ -22,6 +22,8 @@ import UpdateTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorMen
 import PaymentForm from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorComponents/PaymentForm";
 import ViewManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageRow/ViewManageTask";
 import UpdateRole from "../DashBoard/DashRoutes/AdminRoutes/UpdateRole";
+import ViewSubmissions from "../DashBoard/DashRoutes/TaskCreatorRoutes/ViewSubmissions";
+import StatusReject from "../DashBoard/DashRoutes/TaskCreatorRoutes/StatusReject";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -128,6 +130,16 @@ const router = createBrowserRouter([
             {
                 path: 'paymenthistory',
                 element: <PaymentHistory />
+            },
+            {
+                path: 'viewsubmissions/:id',
+                element: <ViewSubmissions/>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/submissions/${params.id}`)
+            },
+            {
+                path: 'statusreject/:id',
+                element: <StatusReject/>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/submissions/${params.id}`)
             },
         ]
     },
