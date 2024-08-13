@@ -24,6 +24,7 @@ import ViewManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageRow/ViewMa
 import UpdateRole from "../DashBoard/DashRoutes/AdminRoutes/UpdateRole";
 import ViewSubmissions from "../DashBoard/DashRoutes/TaskCreatorRoutes/ViewSubmissions";
 import StatusReject from "../DashBoard/DashRoutes/TaskCreatorRoutes/StatusReject";
+import StatusApprove from "../DashBoard/DashRoutes/TaskCreatorRoutes/StatusApprove";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -139,6 +140,11 @@ const router = createBrowserRouter([
             {
                 path: 'statusreject/:id',
                 element: <StatusReject/>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/submissions/${params.id}`)
+            },
+            {
+                path: 'statusapprove/:id',
+                element: <StatusApprove/>,
                 loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/submissions/${params.id}`)
             },
         ]

@@ -7,6 +7,17 @@ import { Tooltip } from "react-tooltip";
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [newUser, setNewUser] = useState([])
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const handleScroll = () => {
+        const position = window.scrollY;
+        setScrollPosition(position);
+    };
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user?.email}`)
             .then(res => res.json())
@@ -27,7 +38,7 @@ const Navbar = () => {
         }
     </>
     return (
-        <div className="navbar bg-transparent z-10 fixed lg:px-[250px] lg:h-20 h-24">
+        <div className={`navbar z-10 fixed lg:px-[250px] lg:h-20 h-24 ${scrollPosition > 600 ? 'bg-black': 'bg-transparent'}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-white">

@@ -76,14 +76,14 @@ const TaskCreatorHome = () => {
                         {
                             amounts.filter(st => st.status === 'Pending').map((am, index) => <tr key={am._id}>
                                 <th>{index + 1}</th>
-                                <td>{am.name}</td>
-                                <td>{am.email}</td>
+                                <td>{am.workerName}</td>
+                                <td>{am.workerEmail}</td>
                                 <td>{am.title2}</td>
                                 <td>{am.payableAmount}</td>
                                 <td>
                                     <NavLink to={`/dashboard/viewsubmissions/${am._id}`}><button className="btn btn-success text-white font-bold">View Submission</button></NavLink>
                                 </td>
-                                <td><button className="btn btn-success text-white font-bold">Approve</button></td>
+                                <td><NavLink to={`/dashboard/statusapprove/${am._id}`}><button className="btn btn-success text-white font-bold">Approve</button></NavLink></td>
                                 <td><NavLink to={`/dashboard/statusreject/${am._id}`}><button className="btn btn-success text-white font-bold">Reject</button></NavLink></td>
                             </tr>)
                         }
