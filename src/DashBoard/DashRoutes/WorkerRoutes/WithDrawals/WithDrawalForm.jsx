@@ -62,9 +62,9 @@ const WithDrawalForm = () => {
                         <div className="col-span-full sm:col-span-3 grid">
                             <label htmlFor="firstname" className="text-sm font-bold">Select Payment</label>
                             <select name="payment" className="border p-2 rounded-md">
-                                <option value="bkash">Bkash</option>
-                                <option value="rocket">Rocket</option>
-                                <option value="nagad">Nagad</option>
+                                <option value="Bkash">Bkash</option>
+                                <option value="Rocket">Rocket</option>
+                                <option value="Nagad">Nagad</option>
                             </select>
                         </div>
                         <div className="col-span-full sm:col-span-3">

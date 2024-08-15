@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { NavLink, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../../../AuthProvider/AuthProvider";
 
 const MyTask = () => {
+    const { user } = useContext(AuthContext)
+    const [currentUser, setCurrentUser] = useState([])
     const addedTasks = useLoaderData()
     const [tasks, setTasks] = useState(addedTasks);
+    console.log(currentUser);
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
+            .then(res => res.json())
+            .then(data => setCurrentUser(data))
+    }, [])
     // Delete a single Task
-    const handleDeleteTask = ( _id ) => {
+    const handleDeleteTask = (_id) => {
         fetch(`${import.meta.env.VITE_API_URL}/addedtasks/${_id}`, {
             method: 'DELETE',
         })

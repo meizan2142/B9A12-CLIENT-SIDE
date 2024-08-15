@@ -6,12 +6,18 @@ import moment from "moment";
 const AddTasks = () => {
     const { user } = useContext(AuthContext)
     const [newUser, setNewUser] = useState([])
+    const [currentUser, setCurrentUser] = useState([])
     const navigate = useNavigate()
     const location = useLocation()
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser`)
             .then(res => res.json())
             .then(data => setNewUser(data))
+    }, [])
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`)
+            .then(res => res.json())
+            .then(data => setCurrentUser(data))
     }, [])
     const handleAddTask = e => {
         e.preventDefault()
@@ -29,6 +35,10 @@ const AddTasks = () => {
         const image = form.image.files[0];
         const formData = new FormData()
         formData.append('image', image)
+        let currentUserCoins = 0;
+        currentUserCoins += quantity * amount;
+        let reduced = currentUser.coins - currentUserCoins
+        let newCoins = {reduced}
         const newTask = { title, detail, amount, info, quantity, date, image, userEmail, userName, currentTime, status }
         if (quantity * amount > newUser.length) {
             toast.error("Not available Coin. Purchase Coin")
@@ -45,6 +55,20 @@ const AddTasks = () => {
                 .then(data => {
                     if (data.insertedId) {
                         toast.success('Task Added Successfully!')
+                        navigate(location?.state ? location?.state : '/dashboard/mytask')
+                    }
+                })
+            fetch(`${import.meta.env.VITE_API_URL}/newuser/${currentUser.email}`, {
+                method: 'PATCH',
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(newCoins)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount > 0) {
+                        toast.success('Coin Updated Succesfully')
                         navigate(location?.state ? location?.state : '/dashboard/mytask')
                     }
                 })
