@@ -1,11 +1,10 @@
 import MaximumAmounts from "./MaximumAmounts";
 import WithDrawalForm from "./WithDrawalForm";
-
 const WithDrawals = () => {
     return (
         <div>
-            <MaximumAmounts/>
-            <WithDrawalForm/>
+            <MaximumAmounts />
+            <WithDrawalForm />
         </div>
     );
 };

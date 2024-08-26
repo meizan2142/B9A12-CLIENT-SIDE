@@ -3,7 +3,6 @@ import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../../../../AuthProvider/AuthProvider";
 import moment from "moment";
 import { useLocation, useNavigate } from "react-router-dom";
-
 const WithDrawalForm = () => {
     const { user } = useContext(AuthContext);
     const [newUser, setNewUser] = useState([])

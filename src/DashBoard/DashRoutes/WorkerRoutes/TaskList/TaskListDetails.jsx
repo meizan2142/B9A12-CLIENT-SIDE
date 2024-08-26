@@ -2,15 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../AuthProvider/AuthProvider";
+import CountDown from "./CountDown";
 
 const TaskListDetails = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const singleTaskDetails = useLoaderData()
+    const { date } = singleTaskDetails
     const { title, detail, amount, currentTime } = singleTaskDetails;
     const { user } = useContext(AuthContext);
     const [newUser, setNewUser] = useState([])
-    const {email, name} = newUser;
+    const { email, name } = newUser;
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user?.email}`)
             .then(res => res.json())
@@ -49,6 +51,9 @@ const TaskListDetails = () => {
     }
     return (
         <div>
+            <div>
+                <CountDown date={date} />
+            </div>
             <section
                 className="p-6 shadow-lg rounded-lg lg:mt-10 mt-5 lg:mr-24 ">
                 <form onSubmit={hanldeSubmit} className="container flex flex-col mx-auto space-y-12">

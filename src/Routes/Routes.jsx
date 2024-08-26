@@ -19,7 +19,6 @@ import MySubmissions from "../DashBoard/DashRoutes/WorkerRoutes/MySubmissions";
 import WithDrawals from "../DashBoard/DashRoutes/WorkerRoutes/WithDrawals/WithDrawals";
 import MyTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/MyTask/MyTask";
 import UpdateTask from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/MyTask/UpdateTask";
-import PaymentForm from "../DashBoard/DashRoutes/TaskCreatorRoutes/TaskCreatorComponents/PaymentForm";
 import ViewManageTask from "../DashBoard/DashRoutes/AdminRoutes/ManageRow/ViewManageTask";
 import UpdateRole from "../DashBoard/DashRoutes/AdminRoutes/UpdateRole";
 import ViewSubmissions from "../DashBoard/DashRoutes/TaskCreatorRoutes/ViewSubmissions";
@@ -62,7 +61,7 @@ const router = createBrowserRouter([
             {
                 path: 'mysubmissions',
                 element: <MySubmissions></MySubmissions>,
-                loader: () => fetch(`${import.meta.env.VITE_API_URL}/submissions`)
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/submissionsCount`)
             },
             {
                 path: 'withdrawals',
@@ -120,13 +119,8 @@ const router = createBrowserRouter([
             },
             {
                 path: 'purchasecoin',
-                element: <PurchaseCoin />,
+                element: <PrivateRoute><PurchaseCoin /></PrivateRoute>,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/paymentinfo`)
-            },
-            {
-                path: 'paymentform/:id',
-                element: <PaymentForm/>,
-                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/paymentinfo/${params.id}`)
             },
             {
                 path: 'paymenthistory',

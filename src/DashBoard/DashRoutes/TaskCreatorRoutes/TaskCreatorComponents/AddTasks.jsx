@@ -35,10 +35,10 @@ const AddTasks = () => {
         const image = form.image.files[0];
         const formData = new FormData()
         formData.append('image', image)
-        let currentUserCoins = 0;
-        currentUserCoins += quantity * amount;
-        let reduced = currentUser.coins - currentUserCoins
-        let newCoins = {reduced}
+            let currentUserCoins = 0;
+            currentUserCoins += quantity * amount;
+            let reduced = currentUser.coins - currentUserCoins
+            let newCoins = {reduced}
         const newTask = { title, detail, amount, info, quantity, date, image, userEmail, userName, currentTime, status }
         if (quantity * amount > newUser.length) {
             toast.error("Not available Coin. Purchase Coin")

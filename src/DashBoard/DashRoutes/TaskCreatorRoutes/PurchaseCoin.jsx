@@ -1,14 +1,13 @@
-import { useLoaderData } from "react-router-dom";
-import PaymentCard from "./TaskCreatorComponents/PaymentCard";
+import { Elements } from "@stripe/react-stripe-js";
+import PaymentForm from "./TaskCreatorComponents/PaymentForm";
+import { loadStripe } from "@stripe/stripe-js";
 
 const PurchaseCoin = () => {
-    const paymentInfo = useLoaderData()
+    const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_KEY);
     return (
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 lg:p-0 p-5">
-            {
-                paymentInfo.map(i => <PaymentCard key={i._id} i={i}></PaymentCard>)
-            }
-        </div>
+        <Elements stripe={stripePromise}>
+            <PaymentForm />
+        </Elements>
     );
 };
 
