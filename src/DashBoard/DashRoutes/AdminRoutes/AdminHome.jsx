@@ -10,7 +10,6 @@ const AdminHome = () => {
     const [withdraws, setWithDraws] = useState([])
     const [coinSum, setCoinSum] = useState(0);
     console.log(currentUser);
-    
     const calculateSum = () => {
         return withdraws.reduce((total, item) => total + parseInt(item.amount, 10), 0);
     };

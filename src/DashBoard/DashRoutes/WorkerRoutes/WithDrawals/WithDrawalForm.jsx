@@ -52,11 +52,11 @@ const WithDrawalForm = () => {
                     <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-4 ">
                         <div className="col-span-full sm:col-span-3">
                             <label htmlFor="firstname" className="text-sm font-bold">Coin to Withdraw</label>
-                            <input type="number" placeholder="Coins" name="coin" className="w-full rounded-md p-2 border" />
+                            <input type="number" placeholder="Coins" name="coin" required className="w-full rounded-md p-2 border" />
                         </div>
                         <div className="col-span-full sm:col-span-3">
                             <label htmlFor="lastname" className="text-sm font-bold">Withdraw Amount(Dollar)</label>
-                            <input type="number" placeholder="Withdraw Amount" name="amount" className="w-full rounded-md p-2 border" />
+                            <input type="number" placeholder="Withdraw Amount" required name="amount" className="w-full rounded-md p-2 border" />
                         </div>
                         <div className="col-span-full sm:col-span-3 grid">
                             <label htmlFor="firstname" className="text-sm font-bold">Select Payment</label>
@@ -68,7 +68,7 @@ const WithDrawalForm = () => {
                         </div>
                         <div className="col-span-full sm:col-span-3">
                             <label htmlFor="lastname" className="text-sm font-bold">Account Number</label>
-                            <input type="number" placeholder="Account Number" name="number" className="w-full rounded-md p-2 border" />
+                            <input type="number" placeholder="Account Number" required name="number" className="w-full rounded-md p-2 border" />
                         </div>
                     </div>
                     <div className="col-span-full">
