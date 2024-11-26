@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <a href='https://supermacy-assignment.web.app'>TaskMaster<a>       
 
 ## Description
