@@ -2,10 +2,10 @@ import { Helmet } from "react-helmet";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import SocialLogIn from "../Social/SocialLogIn";
-import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 const Register = () => {
     const { createUser, updateUserProfile, setLoading} = useContext(AuthContext)
     const navigate = useNavigate()
@@ -38,7 +38,7 @@ const Register = () => {
             const displayURL = data.data.display_url;
 
             // user registration = 2
-            let userData = { email, password, role, displayURL, name, coins }
+            let userData = { email, password, role, displayURL, name, coins }   
             const result = await createUser(email, password)
             console.log(result);
             // console.log(userData.role);

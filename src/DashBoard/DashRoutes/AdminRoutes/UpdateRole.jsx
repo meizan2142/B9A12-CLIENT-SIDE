@@ -30,7 +30,7 @@ const UpdateRole = () => {
         userCoins = newCoin;
     }
     const updated = { selectedPerson, userCoins }
-    console.log(updated);
+    console.log(updated);   
     
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/newuser/${user.email}`, {

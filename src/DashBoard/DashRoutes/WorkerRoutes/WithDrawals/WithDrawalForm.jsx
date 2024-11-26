@@ -3,6 +3,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../../../../AuthProvider/AuthProvider";
 import moment from "moment";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 const WithDrawalForm = () => {
     const { user } = useContext(AuthContext);
     const [newUser, setNewUser] = useState([])
@@ -44,6 +45,18 @@ const WithDrawalForm = () => {
                 })
         }
     }
+
+    const handleCreatePayment = () => {
+        
+        axios.post(`${import.meta.env.VITE_API_URL}/create-payment`, {
+            coin: 3213213,
+            currency: "USD"
+        })
+        .then(res => {
+            console.log(res);
+        })
+    }
+
     return (
         <div>
             <form onSubmit={handleWitdraw} className="container flex flex-col mx-auto space-y-12">
@@ -72,7 +85,7 @@ const WithDrawalForm = () => {
                         </div>
                     </div>
                     <div className="col-span-full">
-                        <button className="btn btn-block text-white font-bold transition ease-in delay-150 bg-[#26AE61] hover:-translate-y-1 hover:scale-100 shadow-md hover:text-black">WithDraw</button>
+                        <button onClick={handleCreatePayment} className="btn btn-block text-white font-bold transition ease-in delay-150 bg-[#26AE61] hover:-translate-y-1 hover:scale-100 shadow-md hover:text-black">WithDraw</button>
                     </div>
                 </div>
             </form>

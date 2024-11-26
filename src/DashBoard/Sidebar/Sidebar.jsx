@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import {  Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import WorkerMenu from "../DashRoutes/WorkerRoutes/WorkerMenu/WorkerMenu";
 import TaskCreatorMenu from "../DashRoutes/TaskCreatorRoutes/TaskCreatorMenu/TaskCreatorMenu";
@@ -18,7 +18,7 @@ const Sidebar = () => {
             <div className="border p-5 rounded-lg bg-[#171825] md:hidden hidden lg:inline-block space-y-20">
                 {newUser.role === 'Worker' && <WorkerMenu />}
                 {newUser.role === 'TaskCreator' && <TaskCreatorMenu />}
-                {newUser.role === 'Admin' && <AdminMenu/>}
+                {newUser.role === 'Admin' && <AdminMenu />}
             </div>
             {/* Outlet */}
             <div className="lg:mr-32">
