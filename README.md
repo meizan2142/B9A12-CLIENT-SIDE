@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <a href='https://supermacy-assignment.web.app'>TaskMaster<a>       
 
 ## Description
@@ -10,3 +11,4 @@
 **Frontend:** React, Tailwind CSS,  HTML   
 **Backend:** Node.js, Express.js  
 **Database:** MongoDB  
+
