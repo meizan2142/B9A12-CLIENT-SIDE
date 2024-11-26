@@ -7,7 +7,7 @@
 - Responsive application.
 
 ## Features
-**Frontend:** React, Tailwind CSS,  HTML   
-**Backend:** Node.js, Express.js  
-**Database:** MongoDB  
+- **Frontend:** React, Tailwind CSS,  HTML   
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB  
 
