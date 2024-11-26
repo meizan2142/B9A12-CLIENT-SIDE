@@ -1,1 +1,1 @@
-<a href='https://supermacy-assignment.web.app'>Live Link</a>    
+<a href='https://supermacy-assignment.web.app' target='_blank'>Live Link</a>    
