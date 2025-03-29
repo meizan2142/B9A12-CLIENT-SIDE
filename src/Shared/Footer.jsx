@@ -5,66 +5,88 @@ import { FaLinkedin } from "react-icons/fa";
 const Footer = () => {
     return (
         <div className="bg-[#282828]">
-            <div className="lg:w-[1200px] mx-auto p-10 space-y-7 ">
-                <div>
-                    <NavLink to='/'>
-                        <a className="btn btn-ghost text-sm lg:text-xl">
-                            <img src="https://pixelwibes.com/template/my-task/marketing/assets/img/logo/logo.svg" alt="" />
+            <div className="max-w-[1200px] mx-auto p-6 lg:p-10 space-y-7">
+                {/* Logo and Navigation */}
+                <div className="text-center lg:text-left">
+                    <NavLink to="/">
+                        <a className="btn btn-ghost flex items-center justify-center lg:justify-start text-sm lg:text-xl space-x-3">
+                            <img src="https://pixelwibes.com/template/my-task/marketing/assets/img/logo/logo.svg" alt="TaskMaster Logo" />
                             <p className="text-white">TaskMaster</p>
                         </a>
                     </NavLink>
                 </div>
-                <div className="grid lg:flex items-center justify-center lg:p-0 p-10 lg:justify-around lg:items-center text-white">
-                    <div className="mr-8">
+                {/* Main Content */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10 text-white">
+                    {/* For Candidates */}
+                    <div>
                         <h1 className="font-bold text-lg mb-3">For Candidates</h1>
                         <ul className="space-y-4">
-                            <li className="text-base text-gray-400">Browse Jobs</li>
-                            <li className="text-base text-gray-400">Browse Categories</li>
-                            <li className="text-base text-gray-400">Dashboard</li>
-                            <li className="text-base text-gray-400">BookMarks</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Browse Jobs</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Browse Categories</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Dashboard</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">BookMarks</li>
                         </ul>
                     </div>
-                    <div className="mr-8">
+                    {/* For Admin */}
+                    <div>
                         <h1 className="font-bold text-lg mb-3">For Admin</h1>
                         <ul className="space-y-4">
-                            <li className="text-base text-gray-400">Browse Candidates</li>
-                            <li className="text-base text-gray-400">Admin Dashboard</li>
-                            <li className="text-base text-gray-400">Check List</li>
-                            <li className="text-base text-gray-400">Blogs</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Browse Candidates</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Admin Dashboard</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Check List</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Blogs</li>
                         </ul>
                     </div>
-                    <div className="mr-8">
+                    {/* Other */}
+                    <div>
                         <h1 className="font-bold text-lg mb-3">Other</h1>
                         <ul className="space-y-4">
-                            <li className="text-base text-gray-400">Blog</li>
-                            <li className="text-base text-gray-400">Task Page</li>
-                            <li className="text-base text-gray-400">Contact</li>
-                            <li className="text-base text-gray-400">Social Media</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Blog</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Task Page</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Contact</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Social Media</li>
                         </ul>
                     </div>
-                    <div className="mr-8">
+                    {/* Legal */}
+                    <div>
                         <h1 className="font-bold text-lg mb-3">Legal</h1>
                         <ul className="space-y-4">
-                            <li className="text-base text-gray-400">Privacy Policy</li>
-                            <li className="text-base text-gray-400">Terms of Use</li>
-                            <li className="text-base text-gray-400">FAQ</li>
-                            <li className="text-base text-gray-400">BookMarks</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Privacy Policy</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Terms of Use</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">FAQ</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">BookMarks</li>
                         </ul>
                     </div>
-                    <div>
-                        <h1 className="font-bold text-lg mb-3 flex items-center gap-2 ">
+                    {/* Newsletter */}
+                    <div className="col-span-1 sm:col-span-2 lg:col-span-4">
+                        <h1 className="font-bold text-lg mb-3 flex items-center gap-2">
                             <FaRegMessage />
                             <p>Sign Up For a Newsletter</p>
                         </h1>
-                        <p className="mb-3 text-base text-gray-400">Weekly breaking news, analysis and  <br /> cutting edge advices on job searching.</p>
-                        <div className="space-x-3 space-y-5">
-                            <input type="email" placeholder="Enter your email here" className="p-3 bg-transparent border rounded-md" />
-                            <button className="bg-[#26AE61] text-white font-bold p-3 rounded-md">Subscribe</button>
-                            <div className="flex items-center gap-7">
-                                <a href="https://www.facebook.com/" target="_blank"><FaFacebook className="hover:text-[#26AE61] hover:transition-all" /></a>
-                                <a href="https://github.com/" target="_blank"><FaGithub className="hover:text-[#26AE61] hover:transition-all" /></a>
-                                <a href="https://www.linkedin.com/feed/" target="_blank"><FaLinkedin className="hover:text-[#26AE61] hover:transition-all" /></a>
-                            </div>
+                        <p className="mb-3 text-base text-gray-400">
+                            Weekly breaking news, analysis, and <br />
+                            cutting-edge advice on job searching.
+                        </p>
+                        <div className="flex flex-col md:flex-row items-center gap-4">
+                            <input
+                                type="email"
+                                placeholder="Enter your email here"
+                                className="p-3 w-full md:w-auto bg-transparent border rounded-md"
+                            />
+                            <button className="bg-[#26AE61] text-white font-bold px-5 py-3 rounded-md">
+                                Subscribe
+                            </button>
+                        </div>
+                        <div className="flex items-center gap-5 justify-center md:justify-start mt-4">
+                            <a href="https://www.facebook.com/" target="_blank" className="hover:text-[#26AE61] transition">
+                                <FaFacebook />
+                            </a>
+                            <a href="https://github.com/" target="_blank" className="hover:text-[#26AE61] transition">
+                                <FaGithub />
+                            </a>
+                            <a href="https://www.linkedin.com/feed/" target="_blank" className="hover:text-[#26AE61] transition">
+                                <FaLinkedin />
+                            </a>
                         </div>
                     </div>
                 </div>
