@@ -11,10 +11,10 @@ const Hero = () => {
                     delay: 2500,
                     disableOnInteraction: false,
                 }}
+                loop= {true}
                 pagination={{
                     clickable: true,
                 }}
-                navigation={true}
                 modules={[Autoplay]}
                 className="mySwiper mb-32"
             >

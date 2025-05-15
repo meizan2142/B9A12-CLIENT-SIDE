@@ -7,7 +7,7 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import { Keyboard, Navigation } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 
 const TestimonialSlider = () => {
     return (
@@ -25,12 +25,15 @@ const TestimonialSlider = () => {
                     slidesPerGroup: 3,
                 },
             }}
-            scrollbar={true}
-            navigation={true}
-            pagination={{
-                clickable: true,
-            }}
-            modules={[Keyboard, Navigation]}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                loop= {true}
+                pagination={{
+                    clickable: true,
+                }}
+                modules={[Autoplay]}
             className="mySwiper mt-6"
         >
             <SwiperSlide>
