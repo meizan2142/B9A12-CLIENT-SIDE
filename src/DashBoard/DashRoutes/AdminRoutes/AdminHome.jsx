@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { CiCoins1, CiUser } from "react-icons/ci";
@@ -33,8 +34,6 @@ const AdminHome = () => {
             .then(res => res.json())
             .then(data => setCurrentUser(data))
     }, [])
-    let currentUserCoin = 0;
-    console.log(currentUserCoin);
     
     // To Delete
 

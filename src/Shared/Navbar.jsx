@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { FaCoins, FaBars } from "react-icons/fa";
+import { PiSignOut } from "react-icons/pi";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import 'react-tooltip/dist/react-tooltip.css'
@@ -44,7 +45,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className={`navbar z-10 fixed lg:px-[250px] h-16 ${scrollPosition > 600 ? 'bg-[#282828]' : 'bg-transparent'}`}>
+        <div className={`navbar z-10 fixed lg:px-[250px] h-16 ${scrollPosition > 200 ? 'bg-[#282828]' : 'bg-transparent'}`}>
             {/* Mobile View (small devices) */}
             <div className="flex items-center justify-between w-full lg:hidden">
                 {/* Menu Icon (Left side on mobile) */}
@@ -90,7 +91,10 @@ const Navbar = () => {
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow bg-base-100 rounded-box w-52 space-y-4">
                                 <p className="font-bold">{user.displayName}</p>
                                 <p className="font-bold">{user.email}</p>
-                                <NavLink className="font-bold" onClick={logOut}>LogOut</NavLink>
+                                <NavLink className="font-bold flex items-center gap-2 text-red-500" onClick={logOut}>
+                                    <span><PiSignOut /></span>
+                                    <span>Logout</span>
+                                </NavLink>
                             </ul>
                         </div>
                     ) : (
@@ -141,7 +145,10 @@ const Navbar = () => {
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow bg-base-100 rounded-box w-52 space-y-4">
                                     <p className="font-bold">{user.displayName}</p>
                                     <p className="font-bold">{user.email}</p>
-                                    <NavLink className="font-bold" onClick={logOut}>LogOut</NavLink>
+                                    <NavLink className="font-bold flex items-center gap-2 text-red-500" onClick={logOut}>
+                                        <span><PiSignOut /></span>
+                                        <span>Logout</span>
+                                    </NavLink>
                                 </ul>
                                 <Tooltip id="profile-tooltip" content="User Profile" />
                             </div>
