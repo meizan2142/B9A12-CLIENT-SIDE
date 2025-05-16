@@ -21,27 +21,21 @@ const Footer = () => {
                     <div>
                         <h1 className="font-bold text-lg mb-3">For Candidates</h1>
                         <ul className="space-y-4">
-                            <li className="text-base text-gray-400 hover:text-white transition">Browse Jobs</li>
-                            <li className="text-base text-gray-400 hover:text-white transition">Browse Categories</li>
                             <li className="text-base text-gray-400 hover:text-white transition">Dashboard</li>
-                            <li className="text-base text-gray-400 hover:text-white transition">BookMarks</li>
                         </ul>
                     </div>
                     {/* For Admin */}
                     <div>
                         <h1 className="font-bold text-lg mb-3">For Admin</h1>
                         <ul className="space-y-4">
-                            <li className="text-base text-gray-400 hover:text-white transition">Browse Candidates</li>
+                            <li className="text-base text-gray-400 hover:text-white transition">Manage Users</li>
                             <li className="text-base text-gray-400 hover:text-white transition">Admin Dashboard</li>
-                            <li className="text-base text-gray-400 hover:text-white transition">Check List</li>
-                            <li className="text-base text-gray-400 hover:text-white transition">Blogs</li>
                         </ul>
                     </div>
                     {/* Other */}
                     <div>
                         <h1 className="font-bold text-lg mb-3">Other</h1>
                         <ul className="space-y-4">
-                            <li className="text-base text-gray-400 hover:text-white transition">Blog</li>
                             <li className="text-base text-gray-400 hover:text-white transition">Task Page</li>
                             <li className="text-base text-gray-400 hover:text-white transition">Contact</li>
                             <li className="text-base text-gray-400 hover:text-white transition">Social Media</li>
@@ -54,7 +48,6 @@ const Footer = () => {
                             <li className="text-base text-gray-400 hover:text-white transition">Privacy Policy</li>
                             <li className="text-base text-gray-400 hover:text-white transition">Terms of Use</li>
                             <li className="text-base text-gray-400 hover:text-white transition">FAQ</li>
-                            <li className="text-base text-gray-400 hover:text-white transition">BookMarks</li>
                         </ul>
                     </div>
                     {/* Newsletter */}

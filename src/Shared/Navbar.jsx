@@ -124,7 +124,7 @@ const Navbar = () => {
                 {/* Avatar and Coins (Right side on desktop) */}
                 <div className="flex items-center gap-4">
                     {user ? (
-                        <div className="flex items-center">
+                        <div className="flex items-center gap-4">
                             {(newUser.role === "TaskCreator" || newUser.role === "Worker") && (
                                 <div className="flex items-center gap-2 border border-white p-2 rounded-2xl" data-tooltip-id="coins-tooltip">
                                     <FaCoins className="text-yellow-500" />
