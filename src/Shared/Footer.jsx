@@ -1,90 +1,112 @@
 import { NavLink } from "react-router-dom";
-import { FaGithub, FaRegMessage } from "react-icons/fa6";
-import { FaFacebook } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
 const Footer = () => {
     return (
-        <div className="bg-[#282828]">
-            <div className="max-w-[1200px] mx-auto p-6 lg:p-10 space-y-7">
-                {/* Logo and Navigation */}
-                <div className="text-center lg:text-left">
-                    <NavLink to="/">
-                        <a className="btn btn-ghost flex items-center justify-center lg:justify-start text-sm lg:text-xl space-x-3">
-                            <img src="https://pixelwibes.com/template/my-task/marketing/assets/img/logo/logo.svg" alt="TaskMaster Logo" />
-                            <p className="text-white">TaskMaster</p>
-                        </a>
+        <footer className="bg-[#282828] text-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                {/* Logo and Brand */}
+                <div className="flex justify-center lg:justify-start mb-8">
+                    <NavLink to="/" className="flex items-center space-x-3">
+                        <img
+                            src="https://pixelwibes.com/template/my-task/marketing/assets/img/logo/logo.svg"
+                            alt="TaskMaster Logo"
+                            className="h-8 w-auto"
+                        />
+                        <span className="text-xl font-semibold">TaskMaster</span>
                     </NavLink>
                 </div>
-                {/* Main Content */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10 text-white">
+
+                {/* Grid Layout */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
                     {/* For Candidates */}
-                    <div>
-                        <h1 className="font-bold text-lg mb-3">For Candidates</h1>
-                        <ul className="space-y-4">
-                            <li className="text-base text-gray-400 hover:text-white transition">Dashboard</li>
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-bold">For Candidates</h3>
+                        <ul className="space-y-3">
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Dashboard</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Profile</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">My Tasks</a></li>
                         </ul>
                     </div>
+
                     {/* For Admin */}
-                    <div>
-                        <h1 className="font-bold text-lg mb-3">For Admin</h1>
-                        <ul className="space-y-4">
-                            <li className="text-base text-gray-400 hover:text-white transition">Manage Users</li>
-                            <li className="text-base text-gray-400 hover:text-white transition">Admin Dashboard</li>
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-bold">For Admin</h3>
+                        <ul className="space-y-3">
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Manage Users</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Admin Dashboard</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Settings</a></li>
                         </ul>
                     </div>
-                    {/* Other */}
-                    <div>
-                        <h1 className="font-bold text-lg mb-3">Other</h1>
-                        <ul className="space-y-4">
-                            <li className="text-base text-gray-400 hover:text-white transition">Task Page</li>
-                            <li className="text-base text-gray-400 hover:text-white transition">Contact</li>
-                            <li className="text-base text-gray-400 hover:text-white transition">Social Media</li>
+
+                    {/* Other Links */}
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-bold">Other</h3>
+                        <ul className="space-y-3">
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Task Page</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Social Media</a></li>
                         </ul>
                     </div>
+
                     {/* Legal */}
-                    <div>
-                        <h1 className="font-bold text-lg mb-3">Legal</h1>
-                        <ul className="space-y-4">
-                            <li className="text-base text-gray-400 hover:text-white transition">Privacy Policy</li>
-                            <li className="text-base text-gray-400 hover:text-white transition">Terms of Use</li>
-                            <li className="text-base text-gray-400 hover:text-white transition">FAQ</li>
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-bold">Legal</h3>
+                        <ul className="space-y-3">
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Use</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
                         </ul>
                     </div>
-                    {/* Newsletter */}
-                    <div className="col-span-1 sm:col-span-2 lg:col-span-4">
-                        <h1 className="font-bold text-lg mb-3 flex items-center gap-2">
-                            <FaRegMessage />
-                            <p>Sign Up For a Newsletter</p>
-                        </h1>
-                        <p className="mb-3 text-base text-gray-400">
-                            Weekly breaking news, analysis, and <br />
-                            cutting-edge advice on job searching.
+
+                    {/* Newsletter - Full width on mobile, spans 2 cols on sm, full width on lg+ */}
+                    <div className="col-span-1 sm:col-span-2 lg:col-span-4 space-y-6">
+                        <div className="flex items-center space-x-3 justify-center lg:justify-start">
+                            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <h3 className="text-lg font-bold">Sign Up For a Newsletter</h3>
+                        </div>
+
+                        <p className="text-gray-400 text-center lg:text-left max-w-2xl mx-auto lg:mx-0">
+                            Weekly breaking news, analysis, and cutting-edge advice on job searching.
                         </p>
-                        <div className="flex flex-col md:flex-row items-center gap-4">
+
+                        <div className="flex flex-col md:flex-row gap-4 max-w-xl">
                             <input
                                 type="email"
                                 placeholder="Enter your email here"
-                                className="p-3 w-full md:w-auto bg-transparent border rounded-md"
+                                className="flex-grow px-4 py-3 bg-transparent border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#26AE61] focus:border-transparent"
                             />
-                            <button className="bg-[#26AE61] text-white font-bold px-5 py-3 rounded-md">
+                            <button className="bg-[#26AE61] hover:bg-[#1f8a4f] text-white font-semibold px-6 py-3 rounded-md transition-colors">
                                 Subscribe
                             </button>
                         </div>
-                        <div className="flex items-center gap-5 justify-center md:justify-start mt-4">
-                            <a href="https://www.facebook.com/" target="_blank" className="hover:text-[#26AE61] transition">
-                                <FaFacebook />
+
+                        <div className="flex justify-center lg:justify-start space-x-6 pt-4">
+                            <a href="#" className="text-gray-400 hover:text-[#26AE61] transition-colors">
+                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                                </svg>
                             </a>
-                            <a href="https://github.com/" target="_blank" className="hover:text-[#26AE61] transition">
-                                <FaGithub />
+                            <a href="#" className="text-gray-400 hover:text-[#26AE61] transition-colors">
+                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                                </svg>
                             </a>
-                            <a href="https://www.linkedin.com/feed/" target="_blank" className="hover:text-[#26AE61] transition">
-                                <FaLinkedin />
+                            <a href="#" className="text-gray-400 hover:text-[#26AE61] transition-colors">
+                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
                             </a>
                         </div>
                     </div>
                 </div>
+
+                {/* Copyright */}
+                <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                    <p>&copy; {new Date().getFullYear()} TaskMaster. All rights reserved.</p>
+                </div>
             </div>
-        </div>
+        </footer>
     );
 };
 
