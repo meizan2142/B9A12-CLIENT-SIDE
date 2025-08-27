@@ -21,8 +21,8 @@ const TestimonialSlider = () => {
             }}
             breakpoints={{
                 769: {
-                    slidesPerView: 3,
-                    slidesPerGroup: 3,
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
                 },
             }}
                 autoplay={{

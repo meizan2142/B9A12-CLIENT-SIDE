@@ -23,7 +23,7 @@ const TopEarnersSection = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mx-0 mx-5 mt-6">
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 lg:mx-0 mx-5 mt-6">
                 {
                     topEarners.map(earner => <TopEarnersCard key={earner._id} earner={earner}></TopEarnersCard>)
                 }
